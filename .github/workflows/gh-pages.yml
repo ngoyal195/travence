@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js (no cache / no lockfile required)
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -19,10 +19,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build and export
-        run: |
-          npm run build
-          npm run export
+      - name: Build (static export via next.config.js)
+        run: npm run build
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
