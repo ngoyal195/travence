@@ -1,12 +1,28 @@
-import { useRouter } from 'next/router';
 import Header from "../../components/Header";
 import ProductGallery from "../../components/ProductGallery";
 import products from "../../lib/products";
 
-export default function ProductPage(){
-  const router = useRouter();
-  const { slug } = router.query;
-  const product = products.find(p => p.slug === slug) || products[0];
+export async function getStaticPaths() {
+  const paths = products.map((p) => ({ params: { slug: p.slug } }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const product = products.find((p) => p.slug === params.slug) || null;
+  return { props: { product } };
+}
+
+export default function ProductPage({ product }) {
+  if (!product) {
+    return (
+      <>
+        <Header />
+        <main className="max-w-[1200px] mx-auto px-6 py-10">
+          <div>Product not found</div>
+        </main>
+      </>
+    );
+  }
 
   return (
     <>
@@ -27,7 +43,8 @@ export default function ProductPage(){
             </div>
 
             <div className="mt-6 text-sm text-gray-600">
-              <strong>Weight:</strong> {product.weight} • <strong>Dimensions:</strong> {product.dims}
+              <strong>Weight:</strong> {product.weight} • <strong>Dimensions:</strong>{" "}
+              {product.dims}
             </div>
           </div>
         </div>
