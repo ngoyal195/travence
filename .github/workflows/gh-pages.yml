@@ -1,15 +1,26 @@
 name: Build and deploy to GitHub Pages
+
+# Run on push to main (change if your default branch is 'master')
 on:
   push:
     branches:
-      - main   # change to 'master' if your default branch is master
+      - main
+
+# Request explicit permissions so the GITHUB_TOKEN can push to gh-pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repo (with credentials)
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # ensure GITHUB_TOKEN is available to later steps
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
