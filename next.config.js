@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Use Next.js v14 static export mode
+  // Next.js v14 static export
   output: 'export',
-  // Helpful for GitHub Pages so routes become directory/index.html files
+  // write files as directory/index.html for GitHub Pages
   trailingSlash: true,
+  // IMPORTANT for repo pages at https://<user>.github.io/travence/
+  basePath: '/travence',
+  assetPrefix: '/travence/',
 };
 
 module.exports = nextConfig;
