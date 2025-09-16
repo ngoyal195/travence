@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens */
+:root{
+  --brand-charcoal: #0F1724;
+  --brand-accent: #FF6A2B;
+  --brand-sand: #C7A97E;
+  --bg: #FAF9F6;
+}
+
+/* Base page */
+html,body,#__next{ height:100%; }
+body {
+  background: var(--bg);
+  color: var(--brand-charcoal);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Primary button utility */
+.btn-primary{
+  @apply px-5 py-3 rounded-lg text-white font-medium inline-block;
+  background: var(--brand-accent);
+}
