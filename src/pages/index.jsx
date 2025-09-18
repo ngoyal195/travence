@@ -44,7 +44,7 @@ export default function Home() {
             <img
               src="images/hero-bag.png"
               alt="Travence Luggage"
-              className="w-full rounded-2xl shadow-lg"
+              className="w-full"
             />
           </div>
         </div>
@@ -136,13 +136,13 @@ export default function Home() {
         </p>
         <div className="mt-6 flex justify-center gap-4">
           <a
-            href="mailto:info@travence.com"
+            href="mailto:hellotravence@gmail.com"
             className="px-6 py-3 bg-white text-gray-900 rounded-lg shadow hover:bg-gray-100 transition"
           >
             Email Us
           </a>
           <a
-            href="https://wa.me/911234567890"
+            href="https://wa.me/+918527530306"
             target="_blank"
             className="px-6 py-3 border border-white rounded-lg hover:bg-gray-800 transition"
           >
