@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,21 +10,88 @@
   --brand-charcoal: #0F1724;
   --brand-accent: #FF6A2B;
   --brand-sand: #C7A97E;
-  --bg: #FAF9F6;
+  --bg: #F7F6F4; /* soft off-white */
+  --muted: #6B7280;
+  --radius: 12px;
+  --container: 1200px;
 }
 
-/* Base page */
+/* Reset / base */
 html,body,#__next{ height:100%; }
 body {
   background: var(--bg);
   color: var(--brand-charcoal);
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  line-height: 1.5;
+  margin:0;
 }
 
-/* Primary button utility */
-.btn-primary{
-  @apply px-5 py-3 rounded-lg text-white font-medium inline-block;
-  background: var(--brand-accent);
+/* Headings */
+h1 { font-family: 'Poppins', 'Inter', sans-serif; font-weight:800; color:var(--brand-charcoal); }
+h2 { font-family: 'Poppins', 'Inter', sans-serif; font-weight:700; color:var(--brand-charcoal); }
+
+/* Container helper */
+.container {
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold text-white;
+  background: linear-gradient(90deg,var(--brand-accent), #ff5a16);
+  box-shadow: 0 6px 18px rgba(255,106,43,0.14);
+}
+.btn-ghost {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-medium;
+  background: transparent;
+  border: 1px solid rgba(16,24,40,0.06);
+  color: var(--brand-charcoal);
+}
+
+/* Header specific */
+.site-header {
+  background: transparent;
+  backdrop-filter: blur(6px);
+}
+.site-header .nav {
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+.site-header .brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  font-size:18px;
+}
+
+/* Hero spacing */
+.hero {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+@media (min-width: 768px) {
+  .hero { padding-top: 96px; padding-bottom: 96px; }
+}
+
+/* Cards / product grid */
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 6px 20px rgba(17,24,39,0.03);
+}
+
+/* Footer small */
+.site-footer {
+  padding: 48px 0;
+  color: var(--muted);
+  font-size: 14px;
 }
