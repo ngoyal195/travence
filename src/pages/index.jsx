@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Travence</title>
+        <title>Travence — Premium Luggage</title>
         <meta
           name="description"
           content="Travence manufactures and trades premium luggage bags including backpacks, duffels, trolleys, and more."
@@ -12,183 +12,178 @@ export default function Home() {
         <link rel="icon" href="images/logo.png" />
       </Head>
 
-      {/* Hero Section */}
-      <section className="hero relative bg-gray-50">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-20">
-          {/* Text */}
-          <div className="flex-1">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-              Premium Luggage <br /> For Every Journey
+      {/* Header */}
+      <header className="bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="/" className="flex items-center gap-3">
+            <img src="images/logo.png" alt="Travence" className="h-10" />
+          </a>
+
+          <nav className="hidden md:flex gap-8 items-center text-gray-700">
+            <a href="#products" className="hover:text-gray-900">Products</a>
+            <a href="#about" className="hover:text-gray-900">About</a>
+            <a href="#contact" className="hover:text-gray-900">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Trust / credibility bar */}
+      <div className="bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-600">
+          <div className="flex items-center gap-3">✅ Free shipping over ₹5,000</div>
+          <div className="flex items-center gap-3">🛡️ Lifetime wheel warranty</div>
+          <div className="flex items-center gap-3">📦 30-day returns</div>
+        </div>
+      </div>
+
+      {/* Hero */}
+      <section className="hero bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left: copy */}
+          <div className="max-w-xl">
+            <p className="text-sm uppercase tracking-wide text-gray-500 mb-4">Comfort • Durable • Travel-ready</p>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+              Premium Luggage <br /> for Every Journey
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              Durable. Stylish. Trusted by travelers worldwide.
+              Stylish, robust trolley bags and backpacks built to last — handcrafted for the road and airport.
             </p>
-            <div className="mt-8 flex gap-4">
+
+            <div className="mt-8 flex items-center gap-4">
               <a
                 href="#products"
-                className="px-6 py-3 bg-black text-white rounded-lg shadow hover:bg-gray-800 transition"
+                className="inline-flex items-center justify-center px-6 py-3 bg-black text-white rounded-full font-medium shadow-sm hover:shadow-md transition"
               >
-                Explore Collection
+                View Collection
               </a>
+
               <a
                 href="#contact"
-                className="px-6 py-3 border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-100 transition"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-900 rounded-full font-medium hover:bg-gray-100 transition"
               >
                 Contact Us
               </a>
             </div>
+
+            {/* small features */}
+            <div className="mt-8 flex flex-wrap gap-4 text-sm text-gray-600">
+              <div className="bg-white px-3 py-2 rounded-full shadow-sm">Lightweight frames</div>
+              <div className="bg-white px-3 py-2 rounded-full shadow-sm">360° spinner wheels</div>
+            </div>
           </div>
 
-          {/* Image */}
-          <div className="flex-1 mt-10 md:mt-0 md:ml-10">
-            <img
-              src="images/hero-bag.png"
-              alt="Travence Luggage"
-              className="w-full"
-            />
+          {/* Right: big logo / hero image card */}
+          <div className="flex justify-center md:justify-end">
+            <div className="bg-white rounded-2xl p-8 w-full max-w-md flex items-center justify-center">
+              <img src="images/hero-bag.png" alt="Travence bag" className="max-h-72 object-contain" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section id="products" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
-            Explore Our Collection
-          </h2>
-          <p className="mt-2 text-gray-600">
-            Backpacks, Duffels, Trolleys, Office Bags & More
-          </p>
+      <section id="products" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Explore Our Collection</h2>
+            <a href="#products" className="text-sm text-gray-600 hover:text-gray-900">See all</a>
+          </div>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {[
-              { name: "Cabin Lite", img: "/bag1.png" },
-              { name: "Expander 24", img: "/bag2.png" },
-              { name: "Business Roller", img: "/bag3.png" },
-            ].map((product) => (
-              <div
-                key={product.name}
-                className="border rounded-2xl shadow-sm hover:shadow-lg transition p-6"
-              >
-                <img
-                  src={product.img}
-                  alt={product.name}
-                  className="w-full h-60 object-cover rounded-lg"
-                />
-                <h3 className="mt-4 text-xl font-semibold text-gray-900">
-                  {product.name}
-                </h3>
-              </div>
+              { name: "Cabin Lite", img: "images/bag1.png", tag: "Carry-on friendly" },
+              { name: "Expander 24", img: "images/bag2.png", tag: "Expandable capacity" },
+              { name: "Business Roller", img: "images/bag3.png", tag: "Laptop compartment" },
+            ].map((p) => (
+              <article key={p.name} className="bg-white border rounded-2xl p-4 hover:shadow-lg transition transform hover:-translate-y-1">
+                <div className="w-full h-56 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
+                  <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
+                </div>
+                <h3 className="mt-4 font-semibold text-lg text-gray-900">{p.name}</h3>
+                <p className="text-sm text-gray-500 mt-2">{p.tag}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Brand Story Section */}
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Our Brand Story</h2>
-          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            At Travence, we design and trade luggage bags that combine style,
-            strength, and innovation. We believe every journey is unique, and your
-            luggage should be a reliable partner. From sleek backpacks for your
-            daily commute to durable trolleys for international travel, we are
-            committed to delivering quality you can trust.
-          </p>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center text-gray-900">
-            Why Choose Travence
-          </h2>
-
-          <div className="mt-12 grid gap-10 sm:grid-cols-2 md:grid-cols-4 text-center">
-            <div>
-              <span className="text-4xl">🧳</span>
-              <h3 className="mt-4 text-xl font-semibold">Durable Materials</h3>
-            </div>
-            <div>
-              <span className="text-4xl">🌍</span>
-              <h3 className="mt-4 text-xl font-semibold">Wide Range</h3>
-            </div>
-            <div>
-              <span className="text-4xl">🛡️</span>
-              <h3 className="mt-4 text-xl font-semibold">Warranty Assured</h3>
-            </div>
-            <div>
-              <span className="text-4xl">🚚</span>
-              <h3 className="mt-4 text-xl font-semibold">Wholesale + Retail</h3>
-            </div>
+      {/* Testimonials */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h3 className="text-2xl font-bold text-gray-900">What customers say</h3>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <blockquote className="bg-white p-6 rounded-xl shadow-sm text-left">
+              <p className="text-gray-700">“Bought the Cabin Lite and it’s been perfect for short business trips — light and sturdy.”</p>
+              <footer className="mt-4 text-sm text-gray-500">— Rahul, Frequent Traveller</footer>
+            </blockquote>
+            <blockquote className="bg-white p-6 rounded-xl shadow-sm text-left">
+              <p className="text-gray-700">“Excellent wheels, smooth rolling and great build quality. Highly recommend Travence.”</p>
+              <footer className="mt-4 text-sm text-gray-500">— Priya, Travel Blogger</footer>
+            </blockquote>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Trusted by Travelers</h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
-              <p className="text-gray-600 italic">"The best backpack I've ever owned. Durable and stylish, perfect for my daily commute."</p>
-              <p className="mt-4 font-semibold text-gray-800">- Jane D.</p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
-              <p className="text-gray-600 italic">"I've traveled all over with my Travence trolley. The quality is amazing and it still looks new."</p>
-              <p className="mt-4 font-semibold text-gray-800">- David S.</p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
-              <p className="text-gray-600 italic">"Love my new duffel bag. It's so spacious and easy to carry. Highly recommend!"</p>
-              <p className="mt-4 font-semibold text-gray-800">- Maria K.</p>
-            </div>
+      {/* Newsletter / Leads */}
+      <section className="py-12 bg-white">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h4 className="text-xl font-semibold text-gray-900">Stay in the loop</h4>
+          <p className="mt-2 text-gray-600">Get new product launches and wholesale offers in your inbox.</p>
+
+          <form className="mt-6 flex max-w-xl mx-auto gap-2">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              aria-label="Email"
+              className="flex-1 px-4 py-3 border rounded-l-lg border-gray-200 focus:outline-none"
+            />
+            <button className="px-6 py-3 bg-black text-white rounded-r-lg font-medium">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-16 bg-gray-900 text-white text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h3 className="text-2xl font-bold">Get in touch — bulk & retail enquiries</h3>
+          <p className="mt-3 text-gray-300">Email us at <a className="underline" href="mailto:hellotravence@gmail.com">hellotravence@gmail.com</a> or message on WhatsApp.</p>
+          <div className="mt-6">
+            <a href="mailto:hellotravence@gmail.com" className="px-6 py-3 bg-white text-gray-900 rounded-full font-medium mr-3">Email Us</a>
+            <a href="https://wa.me/+918527530306" target="_blank" className="px-6 py-3 border border-white rounded-full">WhatsApp</a>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Banner */}
-      <section className="py-20 bg-blue-600 text-white text-center">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-bold">Ready to get in touch?</h2>
-          <p className="mt-4 text-lg">Contact us for bulk orders or any inquiries. We'd love to hear from you.</p>
-          <a href="#contact" className="mt-8 inline-block px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition">
-            Contact Us Today
-          </a>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section
-        id="contact"
-        className="py-20 bg-gray-900 text-white text-center"
-      >
-        <h2 className="text-3xl font-bold">Get in Touch</h2>
-        <p className="mt-4 text-gray-300">
-          Have bulk orders or want to explore our collection? We’d love to hear
-          from you.
-        </p>
-        <div className="mt-6 flex justify-center gap-4">
-          <a
-            href="mailto:hellotravence@gmail.com"
-            className="px-6 py-3 bg-white text-gray-900 rounded-lg shadow hover:bg-gray-100 transition"
-          >
-            Email Us
-          </a>
-          <a
-            href="https://wa.me/+918527530306"
-            target="_blank"
-            className="px-6 py-3 border border-white rounded-lg hover:bg-gray-800 transition"
-          >
-            WhatsApp
-          </a>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-6 bg-black text-center text-gray-400">
-        <p className="mb-2">© {new Date().getFullYear()} Travence. All rights reserved.</p>
-        <p>Follow us: <a href="#" className="text-gray-300 hover:text-white transition">Instagram</a> | <a href="#" className="text-gray-300 hover:text-white transition">Facebook</a></p>
+      <footer className="bg-black text-gray-300">
+        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <img src="images/logo.png" alt="Travence" className="h-10 mb-4" />
+            <p className="text-sm text-gray-400 max-w-sm">Travence — style in motion. Manufacturer & trader of quality luggage and travel gear.</p>
+          </div>
+
+          <div className="text-sm">
+            <h4 className="font-semibold text-gray-200 mb-3">Quick links</h4>
+            <ul className="space-y-2">
+              <li><a href="#products" className="hover:text-white">Products</a></li>
+              <li><a href="#about" className="hover:text-white">About</a></li>
+              <li><a href="#contact" className="hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-gray-200 mb-3">Follow</h4>
+            <div className="flex items-center gap-3">
+              <a href="#" className="text-gray-400 hover:text-white">Instagram</a>
+              <a href="#" className="text-gray-400 hover:text-white">Facebook</a>
+              <a href="#" className="text-gray-400 hover:text-white">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-800 text-sm text-center py-4">
+          © {new Date().getFullYear()} Travence. All rights reserved.
+        </div>
       </footer>
     </>
   );
