@@ -75,10 +75,10 @@ h2 { font-family: 'Poppins', 'Inter', sans-serif; font-weight:700; color:var(--b
 /* Hero spacing */
 .hero {
   
-  padding-bottom: 64px;
+  padding-bottom: 36px;
 }
 @media (min-width: 768px) {
-  .hero { padding-bottom: 96px; }
+  .hero { padding-bottom: 75px; }
 }
 
 /* Cards / product grid */
