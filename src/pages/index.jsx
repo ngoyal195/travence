@@ -10,6 +10,10 @@ export default function Home() {
           content="Travence manufactures and trades premium luggage bags including backpacks, duffels, trolleys, and more."
         />
         <link rel="icon" href="images/logo.png" />
+        {/* Added the Google Font link for Oswald */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
       </Head>
 
       {/* Header */}
@@ -18,7 +22,8 @@ export default function Home() {
           {/* Updated brand logo to include "Travence" and TM symbol */}
           <a href="/" className="flex items-center gap-3">
             <img src="images/logo.png" alt="Travence" className="h-10" />
-            <h1 className="text-3xl font-extrabold text-gray-900 font-sans">
+            {/* Updated the font to Oswald and made it uppercase */}
+            <h1 className="text-3xl font-extrabold text-gray-900 font-['Oswald'] uppercase">
               Travence<span className="text-lg font-normal align-top">™</span>
             </h1>
           </a>
@@ -30,8 +35,6 @@ export default function Home() {
           </nav>
         </div>
       </header>
-
-      {/* Removed the credibility bar */}
 
       {/* Hero */}
       <section className="hero bg-white">
