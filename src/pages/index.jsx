@@ -15,8 +15,12 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Updated brand logo to include "Travence" and TM symbol */}
           <a href="/" className="flex items-center gap-3">
             <img src="images/logo.png" alt="Travence" className="h-10" />
+            <h1 className="text-3xl font-extrabold text-gray-900 font-sans">
+              Travence<span className="text-lg font-normal align-top">™</span>
+            </h1>
           </a>
 
           <nav className="hidden md:flex gap-8 items-center text-gray-700">
@@ -27,17 +31,10 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Trust / credibility bar */}
-      <div className="bg-white"> {/* Changed from bg-gray-50 to bg-white */}
-        <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-600">
-          <div className="flex items-center gap-3">✅ Free shipping over ₹5,000</div>
-          <div className="flex items-center gap-3">🛡️ Lifetime wheel warranty</div>
-          <div className="flex items-center gap-3">📦 30-day returns</div>
-        </div>
-      </div>
+      {/* Removed the credibility bar */}
 
       {/* Hero */}
-      <section className="hero bg-white"> {/* Changed from bg-gray-50 to bg-white */}
+      <section className="hero bg-white">
         <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: copy */}
           <div className="max-w-xl">
@@ -108,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-white"> {/* Changed from bg-gray-50 to bg-white */}
+      <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h3 className="text-2xl font-bold text-gray-900">What customers say</h3>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -121,6 +118,16 @@ export default function Home() {
               <footer className="mt-4 text-sm text-gray-500">— Priya, Travel Blogger</footer>
             </blockquote>
           </div>
+        </div>
+      </section>
+
+      {/* Added About section with some placeholder text */}
+      <section id="about" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">About Our Brand</h2>
+          <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600 text-center">
+            At Travence, we believe that every journey tells a story. We handcraft premium luggage bags with a focus on durability, comfort, and timeless style. Our products are designed for the modern traveler, built to withstand the rigors of the road while making a statement. We stand by our quality, offering lifetime warranties on our wheels and a commitment to customer satisfaction.
+          </p>
         </div>
       </section>
 
@@ -143,7 +150,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-16 bg-black text-white text-center"> {/* bg-black is needed for contrast here */}
+      <section id="contact" className="py-16 bg-black text-white text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h3 className="text-2xl font-bold">Get in touch — bulk & retail enquiries</h3>
           <p className="mt-3 text-gray-300">Email us at <a className="underline" href="mailto:hellotravence@gmail.com">hellotravence@gmail.com</a> or message on WhatsApp.</p>
@@ -155,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-300"> {/* bg-black is needed for contrast here */}
+      <footer className="bg-black text-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <img src="images/logo.png" alt="Travence" className="h-10 mb-4" />
