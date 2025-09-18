@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Travence | Premium Luggage Bags</title>
+        <title>Travence</title>
         <meta
           name="description"
           content="Travence manufactures and trades premium luggage bags including backpacks, duffels, trolleys, and more."
@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative bg-gray-50">
+      <section className="hero relative bg-gray-50">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-20">
           {/* Text */}
           <div className="flex-1">
@@ -91,9 +91,7 @@ export default function Home() {
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
             At Travence, we design and trade luggage bags that combine style,
             strength, and innovation. From backpacks and duffels to premium
-            trolleys, we provide solutions for every journey. Our collection
-            includes trusted brands like Safari, VIP, American Tourister,
-            Aristocrat, Skybags, and more.
+            trolleys, we provide solutions for every journey.
           </p>
         </div>
       </section>
