@@ -28,7 +28,7 @@ export default function Home() {
                 href="#products"
                 className="px-6 py-3 bg-black text-white rounded-lg shadow hover:bg-gray-800 transition"
               >
-                View Collection
+                Explore Collection
               </a>
               <a
                 href="#contact"
@@ -84,14 +84,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* Brand Story Section */}
       <section id="about" className="py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900">About Travence</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Our Brand Story</h2>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
             At Travence, we design and trade luggage bags that combine style,
-            strength, and innovation. From backpacks and duffels to premium
-            trolleys, we provide solutions for every journey.
+            strength, and innovation. We believe every journey is unique, and your
+            luggage should be a reliable partner. From sleek backpacks for your
+            daily commute to durable trolleys for international travel, we are
+            committed to delivering quality you can trust.
           </p>
         </div>
       </section>
@@ -124,6 +126,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-900">Trusted by Travelers</h2>
+          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
+              <p className="text-gray-600 italic">"The best backpack I've ever owned. Durable and stylish, perfect for my daily commute."</p>
+              <p className="mt-4 font-semibold text-gray-800">- Jane D.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
+              <p className="text-gray-600 italic">"I've traveled all over with my Travence trolley. The quality is amazing and it still looks new."</p>
+              <p className="mt-4 font-semibold text-gray-800">- David S.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
+              <p className="text-gray-600 italic">"Love my new duffel bag. It's so spacious and easy to carry. Highly recommend!"</p>
+              <p className="mt-4 font-semibold text-gray-800">- Maria K.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="py-20 bg-blue-600 text-white text-center">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-4xl font-bold">Ready to get in touch?</h2>
+          <p className="mt-4 text-lg">Contact us for bulk orders or any inquiries. We'd love to hear from you.</p>
+          <a href="#contact" className="mt-8 inline-block px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition">
+            Contact Us Today
+          </a>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section
         id="contact"
@@ -153,7 +187,8 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-6 bg-black text-center text-gray-400">
-        <p>© {new Date().getFullYear()} Travence. All rights reserved.</p>
+        <p className="mb-2">© {new Date().getFullYear()} Travence. All rights reserved.</p>
+        <p>Follow us: <a href="#" className="text-gray-300 hover:text-white transition">Instagram</a> | <a href="#" className="text-gray-300 hover:text-white transition">Facebook</a></p>
       </footer>
     </>
   );
