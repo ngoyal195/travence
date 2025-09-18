@@ -28,7 +28,7 @@ export default function Home() {
       </header>
 
       {/* Trust / credibility bar */}
-      <div className="bg-gray-50">
+      <div className="bg-white"> {/* Changed from bg-gray-50 to bg-white */}
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-600">
           <div className="flex items-center gap-3">✅ Free shipping over ₹5,000</div>
           <div className="flex items-center gap-3">🛡️ Lifetime wheel warranty</div>
@@ -37,7 +37,7 @@ export default function Home() {
       </div>
 
       {/* Hero */}
-      <section className="hero bg-gray-50">
+      <section className="hero bg-white"> {/* Changed from bg-gray-50 to bg-white */}
         <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: copy */}
           <div className="max-w-xl">
@@ -108,7 +108,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white"> {/* Changed from bg-gray-50 to bg-white */}
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h3 className="text-2xl font-bold text-gray-900">What customers say</h3>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -143,7 +143,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-16 bg-gray-900 text-white text-center">
+      <section id="contact" className="py-16 bg-black text-white text-center"> {/* bg-black is needed for contrast here */}
         <div className="max-w-3xl mx-auto px-6">
           <h3 className="text-2xl font-bold">Get in touch — bulk & retail enquiries</h3>
           <p className="mt-3 text-gray-300">Email us at <a className="underline" href="mailto:hellotravence@gmail.com">hellotravence@gmail.com</a> or message on WhatsApp.</p>
@@ -155,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-300">
+      <footer className="bg-black text-gray-300"> {/* bg-black is needed for contrast here */}
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <img src="images/logo.png" alt="Travence" className="h-10 mb-4" />
