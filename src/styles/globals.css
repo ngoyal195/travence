@@ -78,7 +78,7 @@ h2 { font-family: 'Poppins', 'Inter', sans-serif; font-weight:700; color:var(--b
   padding-bottom: 36px;
 }
 @media (min-width: 768px) {
-  .hero { padding-bottom: 75px; }
+  .hero { padding-bottom: 0px; }
 }
 
 /* Cards / product grid */
