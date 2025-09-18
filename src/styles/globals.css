@@ -95,3 +95,9 @@ h2 { font-family: 'Poppins', 'Inter', sans-serif; font-weight:700; color:var(--b
   color: var(--muted);
   font-size: 14px;
 }
+.hero img {
+  border: none;        /* removes unwanted border */
+  background: none;    /* makes sure no box shows */
+  display: block;      /* cleaner alignment */
+}
+
