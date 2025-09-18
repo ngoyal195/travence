@@ -1,27 +1,33 @@
+
 import Link from "next/link";
 
 export default function Header(){
   return (
-    <header className="w-full bg-white/60 backdrop-blur sticky top-0 z-50 border-b">
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between h-18 px-6 py-3">
-        <Link href="/">
-          <a className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-brand-accent rounded flex items-center justify-center text-white font-bold">T</div>
-            <span className="font-semibold text-lg text-brand-charcoal">Travence</span>
-          </a>
-        </Link>
+    <header className="site-header sticky top-0 z-50">
+      <div className="container flex items-center justify-between py-4">
+        <div className="flex items-center gap-6">
+          {/* Logo / wordmark */}
+          <Link href="/" legacyBehavior>
+            <a className="brand text-brand-charcoal">
+              <div style={{width:42, height:42, borderRadius:10, background:'var(--brand-accent)', color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontWeight:700}}>
+                T
+              </div>
+              <span style={{marginLeft:10}}>Travence</span>
+            </a>
+          </Link>
+        </div>
 
-        <nav className="hidden md:flex gap-6 items-center text-sm text-gray-700">
-          <Link href="/shop"><a>Shop</a></Link>
-          <Link href="/compare"><a>Compare</a></Link>
-          <Link href="/about"><a>About</a></Link>
-          <Link href="/blog"><a>Blog</a></Link>
+        <nav className="nav hidden md:flex items-center text-sm">
+          <Link href="/shop" legacyBehavior><a>Shop</a></Link>
+          <Link href="/compare" legacyBehavior><a>Compare</a></Link>
+          <Link href="/about" legacyBehavior><a>About</a></Link>
+          <Link href="/support" legacyBehavior><a>Support</a></Link>
         </nav>
 
-        <div className="flex items-center gap-4">
-          <button aria-label="Search" className="p-2">🔍</button>
-          <Link href="/account"><a className="p-2">👤</a></Link>
-          <Link href="/cart"><a className="relative p-2">🛒<span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">0</span></a></Link>
+        <div className="flex items-center gap-3">
+          <Link href="/account" legacyBehavior>
+            <a className="btn-ghost">Log in</a>
+          </Link>
         </div>
       </div>
     </header>
