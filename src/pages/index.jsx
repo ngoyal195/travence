@@ -9,6 +9,7 @@ export default function Home() {
           name="description"
           content="Travence manufactures and trades premium luggage bags including backpacks, duffels, trolleys, and more."
         />
+        <link rel="icon" href="/images/logo.png" />
       </Head>
 
       {/* Hero Section */}
@@ -41,7 +42,7 @@ export default function Home() {
           {/* Image */}
           <div className="flex-1 mt-10 md:mt-0 md:ml-10">
             <img
-              src="/hero-bag.png"
+              src="/images/hero-bag.png"
               alt="Travence Luggage"
               className="w-full rounded-2xl shadow-lg"
             />
