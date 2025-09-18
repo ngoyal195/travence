@@ -74,11 +74,11 @@ h2 { font-family: 'Poppins', 'Inter', sans-serif; font-weight:700; color:var(--b
 
 /* Hero spacing */
 .hero {
-  padding-top: 64px;
+  
   padding-bottom: 64px;
 }
 @media (min-width: 768px) {
-  .hero { padding-top: 96px; padding-bottom: 96px; }
+  .hero { padding-bottom: 96px; }
 }
 
 /* Cards / product grid */
