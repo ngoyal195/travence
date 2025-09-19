@@ -218,8 +218,8 @@ export default function Home() {
 
           {/* Right: big logo / hero image card */}
           <div className="flex justify-center md:justify-end">
-            <div className="bg-white rounded-2xl p-8 w-full max-w-md flex items-center justify-center">
-              <img src="images/hero-bag.png" alt="Travence bag" className="max-h-72 object-contain" />
+            <div className="bg-white rounded-2xl p-18 w-full max-w-md flex items-center justify-center">
+              <img src="images/hero-bag.png" alt="Travence bag" className="max-h-100 object-contain" />
             </div>
           </div>
         </div>
