@@ -1,4 +1,69 @@
 import Head from "next/head";
+import { useState } from "react";
+
+// Updated the product data to include multiple images per product
+const products = [
+  { 
+    name: "Cabin Lite", 
+    imgs: ["images/bag1.png", "images/bag1-view2.png", "images/bag1-view3.png"], 
+    tag: "Carry-on friendly" 
+  },
+  { 
+    name: "Expander 24", 
+    imgs: ["images/bag2.png", "images/bag2-view2.png", "images/bag2-view3.png"], 
+    tag: "Expandable capacity" 
+  },
+  { 
+    name: "Business Roller", 
+    imgs: ["images/bag3.png", "images/bag3-view2.png", "images/bag3-view3.png"], 
+    tag: "Laptop compartment" 
+  },
+];
+
+const ProductCard = ({ product }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % product.imgs.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + product.imgs.length) % product.imgs.length);
+  };
+
+  return (
+    <article className="bg-white border rounded-2xl p-4 hover:shadow-lg transition transform hover:-translate-y-1 relative">
+      <div className="w-full h-56 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center relative">
+        <img 
+          src={product.imgs[currentImageIndex]} 
+          alt={product.name} 
+          className="w-full h-full object-cover transition-opacity duration-300" 
+        />
+        {/* Navigation buttons */}
+        {product.imgs.length > 1 && (
+          <>
+            <button 
+              onClick={prevImage} 
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition"
+              aria-label="Previous image"
+            >
+              &lt;
+            </button>
+            <button 
+              onClick={nextImage} 
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition"
+              aria-label="Next image"
+            >
+              &gt;
+            </button>
+          </>
+        )}
+      </div>
+      <h3 className="mt-4 font-semibold text-lg text-gray-900">{product.name}</h3>
+      <p className="text-sm text-gray-500 mt-2">{product.tag}</p>
+    </article>
+  );
+};
 
 export default function Home() {
   return (
@@ -12,7 +77,7 @@ export default function Home() {
         <link rel="icon" href="images/logo.png" />
         {/* Added the Google Font link for Oswald */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
       </Head>
 
@@ -90,18 +155,8 @@ export default function Home() {
           </div>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {[
-              { name: "Cabin Lite", img: "images/bag1.png", tag: "Carry-on friendly" },
-              { name: "Expander 24", img: "images/bag2.png", tag: "Expandable capacity" },
-              { name: "Business Roller", img: "images/bag3.png", tag: "Laptop compartment" },
-            ].map((p) => (
-              <article key={p.name} className="bg-white border rounded-2xl p-4 hover:shadow-lg transition transform hover:-translate-y-1">
-                <div className="w-full h-56 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
-                  <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
-                </div>
-                <h3 className="mt-4 font-semibold text-lg text-gray-900">{p.name}</h3>
-                <p className="text-sm text-gray-500 mt-2">{p.tag}</p>
-              </article>
+            {products.map((product) => (
+              <ProductCard key={product.name} product={product} />
             ))}
           </div>
         </div>
@@ -159,7 +214,7 @@ export default function Home() {
           <p className="mt-3 text-gray-300">Email us at <a className="underline" href="mailto:hellotravence@gmail.com">hellotravence@gmail.com</a> or message on WhatsApp.</p>
           <div className="mt-6">
             <a href="mailto:hellotravence@gmail.com" className="px-6 py-3 bg-white text-gray-900 rounded-full font-medium mr-3">Email Us</a>
-            <a href="https://wa.me/+918527530306" target="_blank" className="px-6 py-3 border border-white rounded-full">WhatsApp</a>
+            <a href="https://wa.me/+918527530306" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-white rounded-full">WhatsApp</a>
           </div>
         </div>
       </section>
