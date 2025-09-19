@@ -20,38 +20,86 @@ const products = [
   },
 ];
 
-const ProductCard = ({ product }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % product.imgs.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + product.imgs.length) % product.imgs.length);
-  };
+// Modal Component for full-screen image view
+const ImageModal = ({ images, currentIndex, onClose, onNext, onPrev }) => {
+  if (!images || images.length === 0) return null;
 
   return (
-    <article className="bg-white border rounded-2xl p-4 hover:shadow-lg transition transform hover:-translate-y-1 relative">
-      <div className="w-full h-56 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center relative">
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+      <div className="relative bg-white rounded-lg max-w-4xl max-h-[90vh] overflow-hidden">
+        <button 
+          onClick={onClose} 
+          className="absolute top-4 right-4 text-white text-3xl font-bold bg-gray-700 hover:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center transition"
+          aria-label="Close image viewer"
+        >
+          &times;
+        </button>
         <img 
-          src={product.imgs[currentImageIndex]} 
-          alt={product.name} 
-          className="w-full h-full object-cover transition-opacity duration-300" 
+          src={images[currentIndex]} 
+          alt="Full screen product view" 
+          className="max-w-full max-h-[80vh] object-contain mx-auto" 
         />
-        {/* Navigation buttons */}
-        {product.imgs.length > 1 && (
+        {images.length > 1 && (
           <>
             <button 
-              onClick={prevImage} 
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition"
+              onClick={onPrev} 
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-700 hover:bg-gray-900 text-white p-3 rounded-full text-2xl transition"
               aria-label="Previous image"
             >
               &lt;
             </button>
             <button 
-              onClick={nextImage} 
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition"
+              onClick={onNext} 
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-700 hover:bg-gray-900 text-white p-3 rounded-full text-2xl transition"
+              aria-label="Next image"
+            >
+              &gt;
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+
+const ProductCard = ({ product, onImageClick }) => {
+  const [currentCardImageIndex, setCurrentCardImageIndex] = useState(0);
+
+  const nextCardImage = (e) => {
+    e.stopPropagation(); // Prevent modal from opening when navigating carousel
+    setCurrentCardImageIndex((prevIndex) => (prevIndex + 1) % product.imgs.length);
+  };
+
+  const prevCardImage = (e) => {
+    e.stopPropagation(); // Prevent modal from opening when navigating carousel
+    setCurrentCardImageIndex((prevIndex) => (prevIndex - 1 + product.imgs.length) % product.imgs.length);
+  };
+
+  return (
+    <article className="bg-white border rounded-2xl p-4 hover:shadow-lg transition transform hover:-translate-y-1 relative group">
+      <div 
+        className="w-full h-72 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center relative cursor-pointer"
+        onClick={() => onImageClick(product.imgs, currentCardImageIndex)} // Open modal on image click
+      >
+        <img 
+          src={product.imgs[currentCardImageIndex]} 
+          alt={product.name} 
+          className="w-full h-full object-contain transition-opacity duration-300 p-2" // Changed to object-contain and added padding
+        />
+        {/* Navigation buttons for the card - only show on hover */}
+        {product.imgs.length > 1 && (
+          <>
+            <button 
+              onClick={prevCardImage} 
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition opacity-0 group-hover:opacity-100"
+              aria-label="Previous image"
+            >
+              &lt;
+            </button>
+            <button 
+              onClick={nextCardImage} 
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition opacity-0 group-hover:opacity-100"
               aria-label="Next image"
             >
               &gt;
@@ -61,11 +109,42 @@ const ProductCard = ({ product }) => {
       </div>
       <h3 className="mt-4 font-semibold text-lg text-gray-900">{product.name}</h3>
       <p className="text-sm text-gray-500 mt-2">{product.tag}</p>
+      {/* Optional: Add a "View Full Screen" button on the card */}
+      <button 
+        onClick={() => onImageClick(product.imgs, currentCardImageIndex)}
+        className="mt-3 w-full inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        View Full Screen
+      </button>
     </article>
   );
 };
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImages, setModalImages] = useState([]);
+  const [currentModalImageIndex, setCurrentModalImageIndex] = useState(0);
+
+  const openModal = (images, initialIndex = 0) => {
+    setModalImages(images);
+    setCurrentModalImageIndex(initialIndex);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalImages([]);
+    setCurrentModalImageIndex(0);
+  };
+
+  const nextModalImage = () => {
+    setCurrentModalImageIndex((prevIndex) => (prevIndex + 1) % modalImages.length);
+  };
+
+  const prevModalImage = () => {
+    setCurrentModalImageIndex((prevIndex) => (prevIndex - 1 + modalImages.length) % modalImages.length);
+  };
+
   return (
     <>
       <Head>
@@ -156,7 +235,7 @@ export default function Home() {
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {products.map((product) => (
-              <ProductCard key={product.name} product={product} />
+              <ProductCard key={product.name} product={product} onImageClick={openModal} />
             ))}
           </div>
         </div>
@@ -250,6 +329,17 @@ export default function Home() {
           © {new Date().getFullYear()} Travence. All rights reserved.
         </div>
       </footer>
+
+      {/* Image Modal */}
+      {isModalOpen && (
+        <ImageModal 
+          images={modalImages}
+          currentIndex={currentModalImageIndex}
+          onClose={closeModal}
+          onNext={nextModalImage}
+          onPrev={prevModalImage}
+        />
+      )}
     </>
   );
 }
