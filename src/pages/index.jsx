@@ -5,7 +5,7 @@ import { useState } from "react";
 const products = [
   { 
     name: "Cabin Lite", 
-    imgs: ["images/bag1.png", "images/bag1-view2.png", "images/bag1-view3.png"], 
+    imgs: ["images/bag1.png", "images/bag1-view2.png", "images/bag1-view3.png", "images/bag1-view4.png", "images/bag1-view5.png"], 
     tag: "Carry-on friendly" 
   },
   { 
