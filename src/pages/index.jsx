@@ -130,9 +130,9 @@ export default function Home() {
     "images/hero-bag.png",
     "images/hero-bag1.png",
     "images/hero-bag2.png",
-    "images/hero-bag3.png",
-    "images/hero-bag4.png",
-    // Add more hero images here
+      "images/hero-bag3.png",
+      "images/hero-bag4.png",
+    // Add more hero images here as needed
   ];
   const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
 
@@ -239,14 +239,19 @@ export default function Home() {
           {/* Right: big logo / hero image card */}
           <div className="flex justify-center md:justify-end">
             <div className="bg-white rounded-2xl p-18 w-full max-w-md flex items-center justify-center relative">
-              <img 
-                src={heroImages[currentHeroImageIndex]} 
-                alt="Travence bag" 
-                className="max-h-100 object-contain transition-opacity duration-1000" 
-                style={{ opacity: 1, transition: 'opacity 1s ease-in-out' }}
-              />
+              <div className="relative w-full h-[300px] sm:h-[400px]">
+                {heroImages.map((src, index) => (
+                  <img
+                    key={index}
+                    src={src}
+                    alt={`Travence bag view ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 p-2 ${
+                      index === currentHeroImageIndex ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
         </div>
       </section>
 
@@ -347,8 +352,8 @@ export default function Home() {
               <a href="#" className="text-gray-400 hover:text-white">Facebook</a>
               <a href="#" className="text-gray-400 hover:text-white">LinkedIn</a>
             </div>
-          </div>
         </div>
+      </div>
 
         <div className="border-t border-gray-800 text-sm text-center py-4">
           © {new Date().getFullYear()} Travence™. All rights reserved.
