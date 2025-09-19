@@ -148,7 +148,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Travence — Premium Luggage</title>
+        <title>Travence™</title>
         <meta
           name="description"
           content="Travence manufactures and trades premium luggage bags including backpacks, duffels, trolleys, and more."
