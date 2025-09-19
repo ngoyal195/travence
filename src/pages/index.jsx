@@ -303,7 +303,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <img src="images/logo.png" alt="Travence" className="h-10 mb-4" />
-            <p className="text-sm text-gray-400 max-w-sm">Travence — style in motion. Manufacturer & trader of quality luggage and travel gear.</p>
+            <p className="text-sm text-gray-400 max-w-sm">Travence™ — Style in Motion. Manufacturer & trader of quality luggage and travel gear.</p>
           </div>
 
           <div className="text-sm">
@@ -326,7 +326,7 @@ export default function Home() {
         </div>
 
         <div className="border-t border-gray-800 text-sm text-center py-4">
-          © {new Date().getFullYear()} Travence. All rights reserved.
+          © {new Date().getFullYear()} Travence™. All rights reserved.
         </div>
       </footer>
 
