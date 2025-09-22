@@ -10,7 +10,7 @@ const products = [
   },
   {
     name: "Expander 24",
-    imgs: ["images/bag2.png", "images/bag2-view2.png", "images/bag2-view3.png"],
+    imgs: ["images/bag2.png", "images/bag2-view2.png", "images/bag2-view3.png", "images/bag2-view4.png", "images/bag2-view5.png", "images/bag2-view6.png", "images/bag2-view7.png"],
     tag: "Expandable capacity"
   },
   {
