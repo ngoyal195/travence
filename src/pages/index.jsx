@@ -4,17 +4,17 @@ import { useState } from "react";
 // Updated the product data to include multiple images per product
 const products = [
   {
-    name: "Cabin Lite",
+    name: "Travence Anti Theft CM(S|M|L)",
     imgs: ["images/bag1.png", "images/bag1-view2.png", "images/bag1-view3.png", "images/bag1-view4.png", "images/bag1-view5.png"],
     tag: "Carry-on friendly"
   },
   {
-    name: "Expander 24",
+    name: "Travence City Y(S|M|L)",
     imgs: ["images/bag2.png", "images/bag2-view2.png", "images/bag2-view3.png", "images/bag2-view4.png", "images/bag2-view5.png", "images/bag2-view6.png", "images/bag2-view7.png"],
     tag: "Expandable capacity"
   },
   {
-    name: "Business Roller",
+    name: "Travence Set of 3(S+M+L)",
     imgs: ["images/bag3.png", "images/bag3-view2.png", "images/bag3-view3.png"],
     tag: "Laptop compartment"
   },
@@ -263,7 +263,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">About Our Brand</h2>
           <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600 text-center">
-            At Travence, we believe that every journey tells a story. We handcraft premium luggage bags with a focus on durability, comfort, and timeless style. Our products are designed for the modern traveler, built to withstand the rigors of the road while making a statement. We stand by our quality, offering lifetime warranties on our wheels and a commitment to customer satisfaction.
+            At Travence, we believe that every journey tells a story. We handcraft premium luggage bags with a focus on durability, comfort, and timeless style. Our products are designed for the modern traveler, built to withstand the rigors of the road while making a statement. We stand by our quality, offering warranties on our luggages and a commitment to customer satisfaction.
           </p>
         </div>
       </section>
