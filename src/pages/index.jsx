@@ -290,9 +290,9 @@ export default function Home() {
       <section id="contact" className="py-16 bg-black text-white text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h3 className="text-2xl font-bold">Get in touch — bulk & retail enquiries</h3>
-          <p className="mt-3 text-gray-300">Email us at <a className="underline" href="mailto:hellotravence@gmail.com">hellotravence@gmail.com</a> or message on WhatsApp.</p>
+          <p className="mt-3 text-gray-300">Email us at <a className="underline" href="mailto:support@travencebags.in">support@travencebags.in</a> or message on WhatsApp.</p>
           <div className="mt-6">
-            <a href="mailto:hellotravence@gmail.com" className="px-6 py-3 bg-white text-gray-900 rounded-full font-medium mr-3">Email Us</a>
+            <a href="mailto:support@travencebags.in" className="px-6 py-3 bg-white text-gray-900 rounded-full font-medium mr-3">Email Us</a>
             <a href="https://wa.me/+918527530306" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-white rounded-full">WhatsApp</a>
           </div>
         </div>
