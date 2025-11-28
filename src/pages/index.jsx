@@ -23,17 +23,17 @@ const products = [
   {
     name: "Travence Anti Theft CM (S|M|L)",
     imgs: ["images/bag1.png", "images/bag1-view2.png", "images/bag1-view3.png", "images/bag1-view4.png", "images/bag1-view5.png"],
-    tag: ["Anti Theft Security Double Zipper", "Integrated TSA Lock", "360° Spinners", "Color Matching Accessories", "Octa Smooth Wheels"]
+    tags: ["Anti Theft Security Double Zipper", "Integrated TSA Lock", "360° Spinners", "Color Matching Accessories", "Octa Smooth Wheels"]
   },
   {
     name: "Travence City Y (S|M|L)",
     imgs: ["images/bag2.png", "images/bag2-view2.png", "images/bag2-view3.png", "images/bag2-view4.png", "images/bag2-view5.png", "images/bag2-view6.png", "images/bag2-view7.png"],
-    tag: ["Radial Design", "Integrated Number Lock", "360° Spinners", "3 Years Warranty", "Double Wheels"]
+    tags: ["Radial Design", "Integrated Number Lock", "360° Spinners", "3 Years Warranty", "Double Wheels"]
   },
   {
     name: "Travence Set of 3 (S+M+L)",
     imgs: ["images/bag3.png", "images/bag3-view2.png", "images/bag3-view3.png"],
-    tag: ["Set of 3", "360° Spinners", "3 Years Warranty", "Available in 6 colors"]
+    tags: ["Set of 3", "360° Spinners", "3 Years Warranty", "Available in 6 colors"]
   },
 ];
 
