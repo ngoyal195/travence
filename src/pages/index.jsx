@@ -418,7 +418,7 @@ export default function Home() {
         </div>
 
         <div className="border-t border-gray-800 text-sm text-center py-6 text-gray-500">
-          © {new Date().getFullYear()} Travence™. All rights reserved. | Crafted for the road and airport.
+          © {new Date().getFullYear()} Travence™. All rights reserved.
         </div>
       </footer>
 
