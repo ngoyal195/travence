@@ -214,7 +214,7 @@ export default function Home() {
           <a href="/" className="flex items-center gap-2">
             <img src="images/logo.png" alt="Travence" className="h-9 w-9" />
             <h1 className="text-3xl font-extrabold text-gray-900"> 
-              Travence<span className="text-lg font-normal align-top text-gray-500">™</span>
+              TRAVENCE<span className="text-lg font-normal align-top text-gray-500">™</span>
             </h1>
           </a>
 
