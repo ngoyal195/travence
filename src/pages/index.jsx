@@ -95,7 +95,7 @@ const ProductCard = ({ product, onImageClick }) => {
 
   return (
     // Updated hover effect: pronounced shadow and slight scale
-    <article className="bg-white border border-gray-100 rounded-2xl p-4 transition duration-300 transform hover:shadow-2xl hover:scale-[1.02] relative group">
+    <article className="bg-white border border-gray-100 rounded-2xl p-4 transition duration-300 transform hover:shadow-2xl hover:scale-[1.02] relative group flex flex-col h-full">
       <div
         className="w-full h-72 bg-gray-50 rounded-lg overflow-hidden flex items-center justify-center relative cursor-pointer"
         onClick={() => onImageClick(product.imgs, currentCardImageIndex)} 
@@ -139,21 +139,26 @@ const ProductCard = ({ product, onImageClick }) => {
       </div>
 
       {/* Product Info */}
-      <h3 className="mt-4 font-bold text-xl text-gray-900 leading-snug">{product.name}</h3>
-      
-      {/* 🥳 CORRECTED TAG RENDERING LOGIC */}
-      <div className="flex flex-wrap gap-2 mt-2">
-        {product.tags.map((tagItem, index) => (
-          <div 
-            key={index} 
-            className="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded-full"
-          >
-            <CheckIcon className="mr-1" />
-            {tagItem}
-          </div>
-        ))}
-      </div>
-      {/* END OF CORRECTED LOGIC */}
+      {/* Product Content Wrapper: This container grows to push the button down */}
+      <div className="flex flex-col flex-grow">
+        {/* Product Info */}
+        <h3 className="mt-4 font-bold text-xl text-gray-900 leading-snug">{product.name}</h3>
+        
+        {/* 🥳 CORRECTED TAG RENDERING LOGIC */}
+        <div className="flex flex-wrap gap-2 mt-2">
+          {product.tags.map((tagItem, index) => (
+            <div 
+              key={index} 
+              className="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded-full"
+            >
+              <CheckIcon className="mr-1" />
+              {tagItem}
+            </div>
+          ))}
+        </div>
+        {/* This ensures the button stays aligned with the bottom of the card, not the bottom of the content wrapper */}
+      </div> 
+      {/* END OF CORRECTED LOGIC */}
 
       {/* Button with new accent color */}
       <button
