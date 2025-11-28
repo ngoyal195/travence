@@ -308,7 +308,7 @@ export default function Home() {
       <section id="about" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="lg:order-2">
-            <img src="images/handcraft-travence.jpeg" alt="Travence crafting process" className="rounded-2xl shadow-2xl" />
+            <img src="images/handcraft-travence.png" alt="Travence crafting process" className="rounded-2xl shadow-2xl" />
           </div>
           <div className="lg:order-1 max-w-xl">
             <p className="text-sm uppercase tracking-widest text-blue-600 font-bold mb-4">Our Commitment</p>
