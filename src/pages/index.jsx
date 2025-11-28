@@ -208,11 +208,12 @@ export default function Home() {
       </Head>
 
       {/* Header */}
+      {/* Header */}
       <header className="bg-white sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
             <img src="images/logo.png" alt="Travence" className="h-9 w-9" />
-            <h1 className="text-3xl font-extrabold text-gray-900 font-['Oswald'] uppercase tracking-widest">
+            <h1 className="text-3xl font-extrabold text-gray-900"> 
               Travence<span className="text-lg font-normal align-top text-gray-500">™</span>
             </h1>
           </a>
