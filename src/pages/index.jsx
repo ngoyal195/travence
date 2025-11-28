@@ -81,81 +81,89 @@ const ImageModal = ({ images, currentIndex, onClose, onNext, onPrev }) => {
 
 
 const ProductCard = ({ product, onImageClick }) => {
-  const [currentCardImageIndex, setCurrentCardImageIndex] = useState(0);
+  const [currentCardImageIndex, setCurrentCardImageIndex] = useState(0);
 
-  const nextCardImage = (e) => {
-    e.stopPropagation(); 
-    setCurrentCardImageIndex((prevIndex) => (prevIndex + 1) % product.imgs.length);
-  };
+  const nextCardImage = (e) => {
+    e.stopPropagation(); 
+    setCurrentCardImageIndex((prevIndex) => (prevIndex + 1) % product.imgs.length);
+  };
 
-  const prevCardImage = (e) => {
-    e.stopPropagation(); 
-    setCurrentCardImageIndex((prevIndex) => (prevIndex - 1 + product.imgs.length) % product.imgs.length);
-  };
+  const prevCardImage = (e) => {
+    e.stopPropagation(); 
+    setCurrentCardImageIndex((prevIndex) => (prevIndex - 1 + product.imgs.length) % product.imgs.length);
+  };
 
-  return (
-    // Updated hover effect: pronounced shadow and slight scale
-    <article className="bg-white border border-gray-100 rounded-2xl p-4 transition duration-300 transform hover:shadow-2xl hover:scale-[1.02] relative group">
-      <div
-        className="w-full h-72 bg-gray-50 rounded-lg overflow-hidden flex items-center justify-center relative cursor-pointer"
-        onClick={() => onImageClick(product.imgs, currentCardImageIndex)} 
-      >
-        <img
-          src={product.imgs[currentCardImageIndex]}
-          alt={product.name}
-          className="w-full h-full object-contain p-4 transition-opacity duration-300"
-        />
-        {/* Navigation buttons for the card - only show on hover */}
-        {product.imgs.length > 1 && (
-          <>
-            <button
-              onClick={prevCardImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition opacity-0 group-hover:opacity-100 duration-300"
-              aria-label="Previous image"
-            >
-              &lt;
-            </button>
-            <button
-              onClick={nextCardImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition opacity-0 group-hover:opacity-100 duration-300"
-              aria-label="Next image"
-            >
-              &gt;
-            </button>
-            {/* Image Indicator Dots */}
-            <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-1">
-              {product.imgs.map((_, index) => (
-                <span
-                  key={index}
-                  className={`block w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentCardImageIndex ? 'bg-black w-4' : 'bg-gray-400'
-                  }`}
-                  aria-label={`View image ${index + 1}`}
-                ></span>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
+  return (
+    // Updated hover effect: pronounced shadow and slight scale
+    <article className="bg-white border border-gray-100 rounded-2xl p-4 transition duration-300 transform hover:shadow-2xl hover:scale-[1.02] relative group">
+      <div
+        className="w-full h-72 bg-gray-50 rounded-lg overflow-hidden flex items-center justify-center relative cursor-pointer"
+        onClick={() => onImageClick(product.imgs, currentCardImageIndex)} 
+      >
+        <img
+          src={product.imgs[currentCardImageIndex]}
+          alt={product.name}
+          className="w-full h-full object-contain p-4 transition-opacity duration-300"
+        />
+        {/* Navigation buttons for the card - only show on hover */}
+        {product.imgs.length > 1 && (
+          <>
+            <button
+              onClick={prevCardImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition opacity-0 group-hover:opacity-100 duration-300"
+              aria-label="Previous image"
+            >
+              &lt;
+            </button>
+            <button
+              onClick={nextCardImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition opacity-0 group-hover:opacity-100 duration-300"
+              aria-label="Next image"
+            >
+              &gt;
+            </button>
+            {/* Image Indicator Dots */}
+            <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-1">
+              {product.imgs.map((_, index) => (
+                <span
+                  key={index}
+                  className={`block w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentCardImageIndex ? 'bg-black w-4' : 'bg-gray-400'
+                  }`}
+                  aria-label={`View image ${index + 1}`}
+                ></span>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
 
-      {/* Product Info */}
-      <h3 className="mt-4 font-bold text-xl text-gray-900 leading-snug">{product.name}</h3>
-      
-      {/* Pill-shaped tag style */}
-      <div className="inline-flex items-center mt-2 px-3 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded-full">
-        <CheckIcon className="mr-1" />
-        {product.tag}
-      </div>
+      {/* Product Info */}
+      <h3 className="mt-4 font-bold text-xl text-gray-900 leading-snug">{product.name}</h3>
+      
+      {/* 🥳 CORRECTED TAG RENDERING LOGIC */}
+      <div className="flex flex-wrap gap-2 mt-2">
+        {product.tags.map((tagItem, index) => (
+          <div 
+            key={index} 
+            className="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded-full"
+          >
+            <CheckIcon className="mr-1" />
+            {tagItem}
+          </div>
+        ))}
+      </div>
+      {/* END OF CORRECTED LOGIC */}
 
-      {/* Button with new accent color */}
-      <button
-        onClick={() => onImageClick(product.imgs, currentCardImageIndex)}
-        className="mt-4 w-full inline-flex items-center justify-center px-4 py-2 border border-black text-sm font-medium rounded-lg text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition"
-      >
-        View Details
-      </button>
-    </article>
-  );
+      {/* Button with new accent color */}
+      <button
+        onClick={() => onImageClick(product.imgs, currentCardImageIndex)}
+        className="mt-4 w-full inline-flex items-center justify-center px-4 py-2 border border-black text-sm font-medium rounded-lg text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition"
+      >
+        View Details
+      </button>
+    </article>
+  );
 };
 
 export default function Home() {
