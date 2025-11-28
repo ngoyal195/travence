@@ -141,11 +141,14 @@ const ProductCard = ({ product, onImageClick }) => {
       {/* Product Info */}
       {/* Product Content Wrapper: This container grows to push the button down */}
       <div className="flex flex-col flex-grow">
-        {/* Product Info */}
-        <h3 className="mt-4 font-bold text-xl text-gray-900 leading-snug">{product.name}</h3>
-        <div className="flex-grow"></div>
-        {/* 🥳 CORRECTED TAG RENDERING LOGIC */}
-        <div className="flex flex-wrap gap-2 mt-2">
+        {/* Product Info - IMPORTANT: Added min-h-[3.5rem] and flex items-center */}
+        <h3 className="mt-4 font-bold text-xl text-gray-900 leading-snug min-h-[3.5rem] flex items-center">{product.name}</h3>
+        
+        {/* NEW: This spacer consumes all remaining vertical space above the tags */}
+        <div className="flex-grow"></div> 
+        
+        {/* CORRECTED TAG RENDERING LOGIC: mt-3 for separation */}
+        <div className="flex flex-wrap gap-2 mt-3">
           {product.tags.map((tagItem, index) => (
             <div 
               key={index} 
@@ -156,8 +159,7 @@ const ProductCard = ({ product, onImageClick }) => {
             </div>
           ))}
         </div>
-        {/* This ensures the button stays aligned with the bottom of the card, not the bottom of the content wrapper */}
-      </div> 
+      </div> 
       {/* END OF CORRECTED LOGIC */}
 
       {/* Button with new accent color */}
