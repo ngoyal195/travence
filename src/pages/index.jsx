@@ -343,34 +343,42 @@ export default function Home() {
       
 
       {/* Contact */}
-      <section id="contact" className="py-16 bg-gray-900 text-white text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h3 className="text-3xl font-bold">Need assistance? Get in touch with our team.</h3>
-          {/* Changed secondary text color from blue-200 to gray-300 for better contrast on dark gray */}
-          <p className="mt-4 text-lg text-gray-300">For retail orders, bulk enquiries, or support, we're here to help.</p>
-          
-          <div className="mt-8 flex justify-center gap-4">
-            {/* Primary contact method styled boldly (Kept as is) */}
-            <a 
-              href="mailto:support@travencebags.in" 
-              className="px-8 py-3 bg-white text-blue-800 font-bold rounded-full text-lg shadow-lg hover:bg-gray-100 transition"
-            >
-              Email Our Support
-            </a>
-            {/* Secondary button (Kept as is) */}
-            <a 
-              href="https://wa.me/+918527530306" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="px-8 py-3 border border-white text-white rounded-full text-lg hover:bg-white hover:text-blue-800 transition"
-            >
-              WhatsApp
-            </a>
-          </div>
-          {/* Changed email text color from blue-300 to gray-400 */}
-          <p className="mt-6 text-sm text-gray-400">Email: <a className="underline" href="mailto:support@travencebags.in">support@travencebags.in</a></p>
-        </div>
-      </section>
+      <section id="contact" className="py-20 bg-gray-900 text-white text-center">
+  <div className="max-w-3xl mx-auto px-6">
+    {/* Heading is strong and prominent */}
+    <h3 className="text-4xl font-extrabold text-white">Need assistance? Get in touch with our team.</h3>
+    
+    {/* Secondary text uses high contrast text-gray-300 */}
+    <p className="mt-4 text-xl text-gray-300">
+      For retail orders, bulk enquiries, or support, we're here to help.
+    </p>
+             
+    <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+      {/* Primary Button: Strongest visual presence (White text on Black background) */}
+      <a 
+        href="mailto:support@travencebags.in" 
+        className="px-8 py-3 bg-white text-black font-bold rounded-lg text-lg shadow-xl hover:bg-gray-200 transition transform hover:-translate-y-0.5"
+      >
+        Email Our Support
+      </a>
+      
+      {/* Secondary Button: Subtle, contrasting style (Outline) */}
+      <a 
+        href="https://wa.me/+918527530306" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="px-8 py-3 border-2 border-white text-white font-medium rounded-lg text-lg hover:bg-white hover:text-gray-900 transition transform hover:-translate-y-0.5"
+      >
+        WhatsApp
+      </a>
+    </div>
+    
+    {/* Small print */}
+    <p className="mt-8 text-sm text-gray-500">
+      <span className="font-semibold">Support Email:</span> <a className="underline hover:text-white transition" href="mailto:support@travencebags.in">support@travencebags.in</a>
+    </p>
+  </div>
+</section>
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
