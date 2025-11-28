@@ -143,7 +143,7 @@ const ProductCard = ({ product, onImageClick }) => {
       <div className="flex flex-col flex-grow">
         {/* Product Info */}
         <h3 className="mt-4 font-bold text-xl text-gray-900 leading-snug">{product.name}</h3>
-        
+        <div className="flex-grow"></div>
         {/* 🥳 CORRECTED TAG RENDERING LOGIC */}
         <div className="flex flex-wrap gap-2 mt-2">
           {product.tags.map((tagItem, index) => (
@@ -343,32 +343,34 @@ export default function Home() {
       
 
       {/* Contact */}
-      <section id="contact" className="py-16 bg-blue-800 text-white text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h3 className="text-3xl font-bold">Need assistance? Get in touch with our team.</h3>
-          <p className="mt-4 text-lg text-blue-200">For retail orders, bulk enquiries, or support, we're here to help.</p>
-          
-          <div className="mt-8 flex justify-center gap-4">
-            {/* Primary contact method styled boldly */}
-            <a 
-              href="mailto:support@travencebags.in" 
-              className="px-8 py-3 bg-white text-blue-800 font-bold rounded-full text-lg shadow-lg hover:bg-gray-100 transition"
-            >
-              Email Our Support
-            </a>
-            <a 
-              href="https://wa.me/+918527530306" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="px-8 py-3 border border-white text-white rounded-full text-lg hover:bg-white hover:text-blue-800 transition"
-            >
-              WhatsApp
-            </a>
-          </div>
-          <p className="mt-6 text-sm text-blue-300">Email: <a className="underline" href="mailto:support@travencebags.in">support@travencebags.in</a></p>
-        </div>
-      </section>
-
+      <section id="contact" className="py-16 bg-gray-900 text-white text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h3 className="text-3xl font-bold">Need assistance? Get in touch with our team.</h3>
+          {/* Changed secondary text color from blue-200 to gray-300 for better contrast on dark gray */}
+          <p className="mt-4 text-lg text-gray-300">For retail orders, bulk enquiries, or support, we're here to help.</p>
+          
+          <div className="mt-8 flex justify-center gap-4">
+            {/* Primary contact method styled boldly (Kept as is) */}
+            <a 
+              href="mailto:support@travencebags.in" 
+              className="px-8 py-3 bg-white text-blue-800 font-bold rounded-full text-lg shadow-lg hover:bg-gray-100 transition"
+            >
+              Email Our Support
+            </a>
+            {/* Secondary button (Kept as is) */}
+            <a 
+              href="https://wa.me/+918527530306" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-3 border border-white text-white rounded-full text-lg hover:bg-white hover:text-blue-800 transition"
+            >
+              WhatsApp
+            </a>
+          </div>
+          {/* Changed email text color from blue-300 to gray-400 */}
+          <p className="mt-6 text-sm text-gray-400">Email: <a className="underline" href="mailto:support@travencebags.in">support@travencebags.in</a></p>
+        </div>
+      </section>
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
