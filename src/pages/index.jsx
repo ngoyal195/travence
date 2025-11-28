@@ -23,17 +23,17 @@ const products = [
   {
     name: "Travence Anti Theft CM (S|M|L)",
     imgs: ["images/bag1.png", "images/bag1-view2.png", "images/bag1-view3.png", "images/bag1-view4.png", "images/bag1-view5.png"],
-    tag: "Carry-on Friendly"
+    tag: ["Anti Theft Security Double Zipper", "Integrated TSA Lock", "360° Spinners", "Color Matching Accessories", "Octa Smooth Wheels"]
   },
   {
     name: "Travence City Y (S|M|L)",
     imgs: ["images/bag2.png", "images/bag2-view2.png", "images/bag2-view3.png", "images/bag2-view4.png", "images/bag2-view5.png", "images/bag2-view6.png", "images/bag2-view7.png"],
-    tag: "Expandable Capacity"
+    tag: ["Radial Design", "Integrated Number Lock", "360° Spinners", "3 Years Warranty", "Double Wheels"]
   },
   {
     name: "Travence Set of 3 (S+M+L)",
     imgs: ["images/bag3.png", "images/bag3-view2.png", "images/bag3-view3.png"],
-    tag: "Laptop Compartment"
+    tag: ["Set of 3", "360° Spinners", "3 Years Warranty", "Available in 6 colors"]
   },
 ];
 
@@ -152,7 +152,7 @@ const ProductCard = ({ product, onImageClick }) => {
         onClick={() => onImageClick(product.imgs, currentCardImageIndex)}
         className="mt-4 w-full inline-flex items-center justify-center px-4 py-2 border border-black text-sm font-medium rounded-lg text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition"
       >
-        View Details & Full Screen
+        View Details
       </button>
     </article>
   );
@@ -308,16 +308,16 @@ export default function Home() {
       <section id="about" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="lg:order-2">
-            <img src="images/about-image.png" alt="Travence crafting process" className="rounded-2xl shadow-2xl" />
+            <img src="images/handcraft-travence.jpeg" alt="Travence crafting process" className="rounded-2xl shadow-2xl" />
           </div>
           <div className="lg:order-1 max-w-xl">
             <p className="text-sm uppercase tracking-widest text-blue-600 font-bold mb-4">Our Commitment</p>
             <h2 className="text-4xl font-bold text-gray-900">Handcrafting Your Next Adventure</h2>
             <p className="mt-6 text-lg text-gray-700">
-              At **Travence**, we believe that every journey tells a story. We handcraft premium luggage bags with a relentless focus on durability, comfort, and **timeless style**. Our products are designed for the modern traveler, built to withstand the rigors of the road and the airport.
+              At Travence, we believe that every journey tells a story. We handcraft premium luggage bags with a relentless focus on durability, comfort, and timeless style. Our products are designed for the modern traveler, built to withstand the rigors of the road and the airport.
             </p>
             <p className="mt-4 text-lg text-gray-700 font-medium">
-              We stand by our quality, offering extended warranties on all our luggage and a commitment to customer satisfaction that lasts a lifetime.
+              We stand by our quality, offering warranties on all our luggage and a commitment to customer satisfaction that lasts a lifetime.
             </p>
             <a href="#products" className="mt-6 inline-flex text-lg font-medium text-blue-600 hover:text-blue-800 transition">
               See Our Quality &rarr;
@@ -326,24 +326,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter / Leads - Modernized style */}
-      <section className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-6 text-center border-2 border-dashed border-gray-300 p-8 rounded-2xl">
-          <h4 className="text-3xl font-extrabold text-gray-900">Stay in the Loop on New Arrivals</h4>
-          <p className="mt-3 text-lg text-gray-600">Be the first to know about new product launches, exclusive offers, and travel tips.</p>
-
-          <form className="mt-8 flex max-w-xl mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your best email address"
-              aria-label="Email"
-              className="flex-1 px-5 py-3 border border-gray-300 rounded-l-lg focus:ring-blue-500 focus:border-blue-500 text-lg"
-            />
-            {/* CTA with accent color */}
-            <button className="px-6 py-3 bg-black text-white text-lg font-medium rounded-r-lg hover:bg-gray-800 transition">Subscribe</button>
-          </form>
-        </div>
-      </section>
+      
 
       {/* Contact */}
       <section id="contact" className="py-16 bg-blue-800 text-white text-center">
@@ -385,31 +368,24 @@ export default function Home() {
             <ul className="space-y-3">
               <li><a href="#products" className="hover:text-white transition">Full Collection</a></li>
               <li><a href="#about" className="hover:text-white transition">Our Story</a></li>
-              <li><a href="#contact" className="hover:text-white transition">Customer Support</a></li>
+              
             </ul>
           </div>
 
-          <div className="text-sm">
-            <h4 className="font-bold text-white mb-4 uppercase tracking-wider">Legal</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="hover:text-white transition">Shipping Policy</a></li>
-              <li><a href="#" className="hover:text-white transition">Refund Policy</a></li>
-              <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
-            </ul>
-          </div>
+          
 
           <div>
             <h4 className="font-bold text-white mb-4 uppercase tracking-wider">Connect</h4>
             <div className="flex items-center gap-4 text-lg">
-              <a href="#" className="text-gray-400 hover:text-white transition" aria-label="Instagram">
+              <a href="https://www.instagram.com/travencebags/" className="text-gray-400 hover:text-white transition" aria-label="Instagram">
                 {/* Instagram Icon Placeholder */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=61584199629262" className="text-gray-400 hover:text-white transition" aria-label="Facebook">
                 {/* Facebook Icon Placeholder */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/travence/" className="text-gray-400 hover:text-white transition" aria-label="LinkedIn">
                 {/* LinkedIn Icon Placeholder */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
               </a>
