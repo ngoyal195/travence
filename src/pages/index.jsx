@@ -95,20 +95,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BRAND SECTION */}
-      <section className="bg-black text-white py-20">
-        <div className="max-w-5xl mx-auto text-center px-6">
-          <h2 className="text-4xl font-bold">
-            Engineered for Modern Travel
-          </h2>
+     {/* BRAND SECTION */}
+<section className="bg-[#0a0a0a] text-white py-24 border-y border-white/5">
+  <div className="max-w-4xl mx-auto text-center px-6">
+    <h2 className="text-4xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-stone-400">
+      Engineered for Modern Travel
+    </h2>
 
-          <p className="mt-6 text-gray-300 text-lg leading-relaxed">
-            Every Travence luggage piece is designed with durability,
-            lightweight engineering, premium aesthetics, and smooth mobility in
-            mind.
-          </p>
-        </div>
-      </section>
+    <p className="mt-8 text-stone-400 text-lg md:text-xl leading-relaxed font-light max-w-2xl mx-auto">
+      Every <span className="text-white font-medium">Travence</span> luggage piece is designed with durability, 
+      lightweight engineering, and smooth mobility in mind.
+    </p>
+  </div>
+</section>
 
       {/* CONTACT */}
       <section
