@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "../components/Header";
-import { supabase } from "../src/lib/supabase";
+import { supabase } from "../lib/supabase";
 
 export default function AccountPage() {
   const [mode, setMode] = useState("login");
