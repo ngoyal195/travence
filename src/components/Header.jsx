@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { supabase } from "../src/lib/supabase";
+import { supabase } from "../lib/supabase";
 
 export default function Header() {
   const [user, setUser] = useState(null);
