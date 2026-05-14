@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabase";
+import { supabase } from "../lib/supabase"; // Verify this path matches your project
 
 export default function Header() {
   const [user, setUser] = useState(null);
@@ -25,45 +26,39 @@ export default function Header() {
   }
 
   return (
-    <header className="site-header sticky top-0 z-50">
+    <header className="site-header sticky top-0 z-50 bg-white border-b border-gray-100">
       <div className="container flex items-center justify-between py-4">
         <div className="flex items-center gap-6">
           <Link href="/" legacyBehavior>
-            <a className="brand text-brand-charcoal">
-              <div
-                style={{
-                  width: 42,
-                  height: 42,
-                  borderRadius: 10,
-                  background: "var(--brand-accent)",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 700,
-                }}
-              >
-                T
+            <a className="brand flex items-center text-brand-charcoal">
+              {/* This replaces the orange "T" box seen in image_aded2b.png */}
+              <div className="relative" style={{ width: 42, height: 42 }}>
+                <Image
+                  src="/images/logo.png"
+                  alt="Travence Logo"
+                  layout="fill"
+                  objectFit="contain"
+                  priority
+                />
               </div>
 
-              <span style={{ marginLeft: 10 }}>Travence</span>
+              <span className="font-bold" style={{ marginLeft: 10 }}>
+                Travence
+              </span>
             </a>
           </Link>
         </div>
 
-        <nav className="nav hidden md:flex items-center text-sm">
+        <nav className="nav hidden md:flex items-center text-sm gap-8">
           <Link href="/shop" legacyBehavior>
             <a>Shop</a>
           </Link>
-
           <Link href="/compare" legacyBehavior>
             <a>Compare</a>
           </Link>
-
           <Link href="/about" legacyBehavior>
             <a>About</a>
           </Link>
-
           <Link href="/support" legacyBehavior>
             <a>Support</a>
           </Link>
@@ -71,12 +66,12 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           {user ? (
-            <button onClick={handleLogout} className="btn-ghost">
+            <button onClick={handleLogout} className="btn-ghost px-4 py-2 rounded-full border border-gray-200 text-sm">
               Logout
             </button>
           ) : (
             <Link href="/account" legacyBehavior>
-              <a className="btn-ghost">Login / Signup</a>
+              <a className="btn-ghost px-4 py-2 rounded-full border border-gray-200 text-sm">Login / Signup</a>
             </Link>
           )}
         </div>
