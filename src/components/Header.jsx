@@ -27,11 +27,10 @@ export default function Header() {
 
   return (
     <header className="site-header sticky top-0 z-50 bg-white border-b border-gray-100">
-      <div className="container flex items-center justify-between py-4">
+     <div className="container flex items-center justify-between py-4">
         <div className="flex items-center gap-6">
           <Link href="/" legacyBehavior>
             <a className="brand flex items-center text-brand-charcoal">
-              {/* This replaces the orange "T" box seen in image_aded2b.png */}
               <div className="relative" style={{ width: 42, height: 42 }}>
                 <Image
                   src="/images/logo.png"
@@ -42,7 +41,11 @@ export default function Header() {
                 />
               </div>
 
-              <span className="font-bold" style={{ marginLeft: 10 }}>
+              {/* Match typography from image_adcfdc.png */}
+              <span 
+                className="font-bold uppercase tracking-[0.15em] text-xl" 
+                style={{ marginLeft: 12, fontFamily: 'sans-serif' }}
+              >
                 Travence
               </span>
             </a>
