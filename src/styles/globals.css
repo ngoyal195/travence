@@ -323,3 +323,29 @@ h2{
 ::-webkit-scrollbar-thumb:hover{
   background:#a8a8a8;
 }
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #111;
+  color: white;
+}
