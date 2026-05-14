@@ -202,38 +202,84 @@ export default function Home() {
       </section>
 
       {/* BRAND STORY */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] text-white py-28 border-y border-white/5">
+     <section className="relative overflow-hidden bg-[#050505] text-white py-32 border-y border-white/5">
 
-        {/* Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-orange-500/10 blur-3xl"></div>
+  {/* Ambient Glow Effects */}
+  <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-orange-500/10 blur-3xl pointer-events-none"></div>
 
-        <div className="relative max-w-5xl mx-auto text-center px-6">
+  <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-white/[0.03] blur-3xl rounded-full pointer-events-none"></div>
 
-          <p className="uppercase tracking-[0.3em] text-orange-400 text-sm font-semibold">
-            The Travence Philosophy
-          </p>
+  <div className="relative max-w-6xl mx-auto px-6 text-center">
 
-          <h2 className="text-5xl md:text-6xl font-black leading-tight mt-6">
+    {/* Label */}
+    <div className="inline-flex items-center gap-3 border border-white/10 bg-white/[0.03] px-5 py-2 rounded-full backdrop-blur-sm">
+      <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></div>
 
-            Engineered
-            <br />
+      <span className="uppercase tracking-[0.25em] text-xs md:text-sm text-orange-300 font-semibold">
+        The Travence Philosophy
+      </span>
+    </div>
 
-            For Motion.
+    {/* Main Heading */}
+    <h2 className="mt-10 text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[0.95]">
 
-          </h2>
+      <span className="block text-white">
+        Engineered
+      </span>
 
-          <p className="mt-10 text-stone-400 text-lg md:text-xl leading-relaxed font-light max-w-3xl mx-auto">
+      <span className="block mt-2 bg-gradient-to-b from-orange-300 via-white to-stone-500 bg-clip-text text-transparent">
+        For Motion.
+      </span>
 
-            Every Travence luggage piece is designed around one idea:
-            movement without friction. From airport terminals to business
-            travel and weekend escapes, our products combine premium materials,
-            smooth mobility, and modern aesthetics into one seamless experience.
+    </h2>
 
-          </p>
+    {/* Subtext */}
+    <p className="mt-12 max-w-3xl mx-auto text-stone-400 text-lg md:text-xl leading-relaxed font-light">
 
-        </div>
+      Every Travence luggage piece is crafted around one principle:
+      effortless movement. From crowded terminals to business travel
+      and weekend escapes, our luggage blends lightweight engineering,
+      smooth mobility, premium durability, and modern aesthetics into
+      one seamless travel experience.
 
-      </section>
+    </p>
+
+    {/* Premium Stats */}
+    <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5">
+
+      <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-6 backdrop-blur-sm">
+        <h3 className="text-3xl font-black text-white">360°</h3>
+        <p className="mt-2 text-sm text-stone-400">
+          Silent Spinner Wheels
+        </p>
+      </div>
+
+      <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-6 backdrop-blur-sm">
+        <h3 className="text-3xl font-black text-white">PP</h3>
+        <p className="mt-2 text-sm text-stone-400">
+          Lightweight Shell
+        </p>
+      </div>
+
+      <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-6 backdrop-blur-sm">
+        <h3 className="text-3xl font-black text-white">TSA</h3>
+        <p className="mt-2 text-sm text-stone-400">
+          Secure Lock System
+        </p>
+      </div>
+
+      <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-6 backdrop-blur-sm">
+        <h3 className="text-3xl font-black text-white">3Y</h3>
+        <p className="mt-2 text-sm text-stone-400">
+          Warranty Coverage
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* TRUST SECTION */}
       <section className="bg-white py-24">
