@@ -113,6 +113,153 @@ const products = [
       "Combination Password Lock",
       "3 Years Warranty"
     ]
+  },
+  {
+    id: 4,
+    slug: "travence-atlantis",
+    name: "Travence Atlantis",
+    subtitle: "Premium Travel Trolley",
+
+    mrp: 10999,
+    offerPrice: 6999,
+
+    rating: 4.8,
+
+    sizes: ["Cabin", "Medium", "Large", "Set of 2", "Set of 3"],
+
+    colors: ["Grey", "Cyan", "Blue", "Khakhi"],
+
+    warranty: "3 Years",
+
+    weight: "1.5kg",
+
+    dims: "66 x 42 x 28 cm",
+
+    images: [
+      "/images/atlantis-1.png",
+      "/images/atlantis-2.png",
+      "/images/atlantis-3.png",
+      "/images/atlantis-4.png"
+    ],
+
+    features: [
+      "360° Spinner Wheels",
+      "TSA Lock",
+      "Scratch Resistant",
+      "Silent Wheels",
+      "Lightweight Shell"
+    ]
+  },
+
+  {
+    id: 5,
+    slug: "travence-m4",
+    name: "Travence M4",
+    subtitle: "Modern Premium Travel Luggage",
+
+    mrp: 9999,
+    offerPrice: 6499,
+
+    rating: 4.7,
+
+    sizes: ["Cabin", "Medium", "Large", "Set of 2", "Set of 3"],
+
+    colors: ["English Green", "Pink", "Grey", "Silver"],
+
+    warranty: "3 Years",
+
+    weight: "1.5kg",
+
+    dims: "66 x 42 x 28 cm",
+
+    images: [
+      "/images/m4-1.png",
+      "/images/m4-2.png",
+      "/images/m4-3.png",
+      "/images/m4-4.png"
+    ],
+
+    features: [
+      "360° Spinner Wheels",
+      "Combination Lock",
+      "Scratch Resistant",
+      "Silent Wheels",
+      "Premium PP Shell"
+    ]
+  },
+
+  {
+    id: 6,
+    slug: "travence-m7",
+    name: "Travence M7",
+    subtitle: "Premium Lightweight Hard Shell Trolley",
+
+    mrp: 11999,
+    offerPrice: 7499,
+
+    rating: 4.8,
+
+    sizes: ["Cabin", "Medium", "Large", "Set of 2", "Set of 3"],
+
+    colors: ["Black", "Silver", "Blue", "Pink"],
+
+    warranty: "3 Years",
+
+    weight: "1.6kg",
+
+    dims: "66 x 42 x 28 cm",
+
+    images: [
+      "/images/m7-1.png",
+      "/images/m7-2.png",
+      "/images/m7-3.png",
+      "/images/m7-4.png"
+    ],
+
+    features: [
+      "360° Spinner Wheels",
+      "TSA Lock",
+      "Scratch Resistant",
+      "Silent Wheels",
+      "Lightweight PP Shell"
+    ]
+  },
+
+  {
+    id: 7,
+    slug: "travence-boxer",
+    name: "Travence Boxer",
+    subtitle: "Strong and Stylish Travel Trolley",
+
+    mrp: 9999,
+    offerPrice: 6499,
+
+    rating: 4.8,
+
+    sizes: ["Cabin", "Medium", "Large", "Set of 2", "Set of 3"],
+
+    colors: ["Black", "Grey", "Blue"],
+
+    warranty: "3 Years",
+
+    weight: "1.5kg",
+
+    dims: "66 x 42 x 28 cm",
+
+    images: [
+      "/images/boxer-1.png",
+      "/images/boxer-2.png",
+      "/images/boxer-3.png",
+      "/images/boxer-4.png"
+    ],
+
+    features: [
+      "360° Spinner Wheels",
+      "Combination Lock",
+      "Scratch Resistant",
+      "Silent Wheels",
+      "Durable PP Shell"
+    ]
   }
 ];
 
