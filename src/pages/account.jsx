@@ -65,7 +65,7 @@ export default function AccountPage() {
             data: {
               full_name: fullName.trim(),
             },
-            emailRedirectTo: `${window.location.origin}/account`,
+            emailRedirectTo: `${window.location.origin}/account/`,
           },
         });
 
@@ -107,7 +107,7 @@ export default function AccountPage() {
             email.trim(),
             {
               redirectTo:
-                `${window.location.origin}/reset-password`,
+                `${window.location.origin}/reset-password/`,
             }
           );
 
