@@ -16,7 +16,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const product = products.find((p) => p.slug === params.slug) || null;
+  const product =
+    products.find((p) => p.slug === params.slug) || null;
 
   return {
     props: { product },
@@ -32,26 +33,43 @@ function getColorClass(color = "") {
   if (c.includes("grey") || c.includes("gray")) return "bg-gray-400";
   if (c.includes("blue")) return "bg-blue-500";
   if (c.includes("pink")) return "bg-pink-400";
-  if (c.includes("khakhi") || c.includes("khaki")) return "bg-yellow-700";
+  if (c.includes("khakhi") || c.includes("khaki"))
+    return "bg-yellow-700";
   if (c.includes("turquoise")) return "bg-teal-400";
   if (c.includes("sea green")) return "bg-emerald-500";
-  if (c.includes("white")) return "bg-white border border-gray-300";
+  if (c.includes("white"))
+    return "bg-white border border-gray-300";
+
   return "bg-gray-200";
 }
 
 function StarRow({ rating = 0 }) {
   const filledStars = Math.round(rating);
+
   return (
     <div className="flex items-center gap-1">
       {Array.from({ length: 5 }).map((_, i) => (
         <span
           key={i}
-          className={`text-xl ${i < filledStars ? "text-amber-400" : "text-gray-300"}`}
+          className={`text-xl ${
+            i < filledStars
+              ? "text-amber-400"
+              : "text-gray-300 dark:text-gray-600"
+          }`}
         >
           ★
         </span>
       ))}
-      <span className="ml-2 text-sm text-gray-500 font-medium">
+
+      <span
+        className="
+          ml-2
+          text-sm
+          text-gray-500
+          dark:text-gray-400
+          font-medium
+        "
+      >
         {rating.toFixed(1)}
       </span>
     </div>
@@ -59,13 +77,22 @@ function StarRow({ rating = 0 }) {
 }
 
 export default function ProductPage({ product }) {
-  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || "");
-  const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || "");
+  const [selectedSize, setSelectedSize] = useState(
+    product?.sizes?.[0] || ""
+  );
+
+  const [selectedColor, setSelectedColor] = useState(
+    product?.colors?.[0] || ""
+  );
+
   const [isCompared, setIsCompared] = useState(false);
 
   const discount = useMemo(() => {
     if (!product?.mrp || !product?.offerPrice) return 0;
-    return Math.round(((product.mrp - product.offerPrice) / product.mrp) * 100);
+
+    return Math.round(
+      ((product.mrp - product.offerPrice) / product.mrp) * 100
+    );
   }, [product]);
 
   const relatedProducts = useMemo(() => {
@@ -89,42 +116,117 @@ export default function ProductPage({ product }) {
   useEffect(() => {
     if (!product) return;
 
-    const saved = JSON.parse(localStorage.getItem("compare") || "[]");
+    const saved = JSON.parse(
+      localStorage.getItem("compare") || "[]"
+    );
+
     setIsCompared(saved.includes(product.slug));
   }, [product]);
 
   const toggleCompare = () => {
     if (!product) return;
 
-    const saved = JSON.parse(localStorage.getItem("compare") || "[]");
+    const saved = JSON.parse(
+      localStorage.getItem("compare") || "[]"
+    );
+
     const exists = saved.includes(product.slug);
 
     let next;
 
     if (exists) {
-      next = saved.filter((slug) => slug !== product.slug);
+      next = saved.filter(
+        (slug) => slug !== product.slug
+      );
+
       setIsCompared(false);
     } else {
       next = [...saved, product.slug].slice(0, 2);
       setIsCompared(true);
     }
 
-    localStorage.setItem("compare", JSON.stringify(next));
+    localStorage.setItem(
+      "compare",
+      JSON.stringify(next)
+    );
   };
+
+  /* =========================
+     PRODUCT NOT FOUND
+  ========================= */
 
   if (!product) {
     return (
       <>
         <Header />
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-          <div className="bg-white border border-gray-100 rounded-3xl p-10 shadow-sm">
-            <h1 className="text-3xl font-black text-gray-900">Product not found</h1>
-            <p className="mt-3 text-gray-600">
+
+        <main
+          className="
+            min-h-screen
+            bg-[#f7f6f4]
+            dark:bg-[#0B0D10]
+            max-w-7xl
+            mx-auto
+            px-4
+            sm:px-6
+            py-16
+            transition-colors
+            duration-500
+          "
+        >
+          <div
+            className="
+              bg-white
+              dark:bg-[#15181D]
+              border
+              border-gray-100
+              dark:border-white/10
+              rounded-3xl
+              p-10
+              shadow-sm
+              dark:shadow-black/30
+              transition-all
+              duration-500
+            "
+          >
+            <h1
+              className="
+                text-3xl
+                font-black
+                text-gray-900
+                dark:text-white
+              "
+            >
+              Product not found
+            </h1>
+
+            <p
+              className="
+                mt-3
+                text-gray-600
+                dark:text-gray-400
+              "
+            >
               The product you are looking for does not exist.
             </p>
+
             <Link
               href="/shop"
-              className="inline-flex mt-6 px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-gray-800 transition"
+              className="
+                inline-flex
+                mt-6
+                px-6
+                py-3
+                rounded-full
+                bg-black
+                dark:bg-white
+                text-white
+                dark:text-black
+                font-semibold
+                hover:bg-gray-800
+                dark:hover:bg-gray-200
+                transition
+              "
             >
               Back to Shop
             </Link>
@@ -138,48 +240,169 @@ export default function ProductPage({ product }) {
     <>
       <Header />
 
-      <main className="bg-[#f7f6f4]">
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <main
+        className="
+          bg-[#f7f6f4]
+          dark:bg-[#0B0D10]
+          transition-colors
+          duration-500
+        "
+      >
+        {/* =========================
+            PRODUCT DETAILS
+        ========================= */}
+
+        <section
+          className="
+            max-w-7xl
+            mx-auto
+            px-4
+            sm:px-6
+            py-8
+            sm:py-12
+          "
+        >
           <div className="grid lg:grid-cols-2 gap-10 xl:gap-14 items-start">
+
+            {/* PRODUCT GALLERY */}
             <div className="lg:sticky lg:top-24">
-              <ProductGallery images={product.images} alt={product.name} />
+              <ProductGallery
+                images={product.images}
+                alt={product.name}
+              />
             </div>
 
-            <div className="bg-white rounded-[28px] border border-gray-100 shadow-[0_18px_50px_rgba(15,23,42,0.06)] p-6 sm:p-8">
+            {/* PRODUCT INFORMATION */}
+            <div
+              className="
+                bg-white
+                dark:bg-[#15181D]
+                rounded-[28px]
+                border
+                border-gray-100
+                dark:border-white/10
+                shadow-[0_18px_50px_rgba(15,23,42,0.06)]
+                dark:shadow-black/40
+                p-6
+                sm:p-8
+                transition-all
+                duration-500
+              "
+            >
+              {/* Badges */}
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center rounded-full bg-amber-500 text-white px-4 py-2 text-sm font-bold">
+                <span
+                  className="
+                    inline-flex
+                    items-center
+                    rounded-full
+                    bg-amber-500
+                    text-white
+                    px-4
+                    py-2
+                    text-sm
+                    font-bold
+                  "
+                >
                   {discount}% OFF
                 </span>
 
-                <span className="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-4 py-2 text-sm font-medium">
+                <span
+                  className="
+                    inline-flex
+                    items-center
+                    rounded-full
+                    bg-gray-100
+                    dark:bg-[#252A32]
+                    text-gray-700
+                    dark:text-gray-300
+                    px-4
+                    py-2
+                    text-sm
+                    font-medium
+                    border
+                    border-transparent
+                    dark:border-white/5
+                  "
+                >
                   {product.warranty}
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl font-black text-gray-900 mt-5 leading-tight">
+              {/* Product Name */}
+              <h1
+                className="
+                  text-4xl
+                  sm:text-5xl
+                  font-black
+                  text-gray-900
+                  dark:text-white
+                  mt-5
+                  leading-tight
+                  transition-colors
+                  duration-500
+                "
+              >
                 {product.name}
               </h1>
 
-              <p className="mt-3 text-lg text-gray-500 leading-relaxed">
+              {/* Subtitle */}
+              <p
+                className="
+                  mt-3
+                  text-lg
+                  text-gray-500
+                  dark:text-gray-400
+                  leading-relaxed
+                  transition-colors
+                  duration-500
+                "
+              >
                 {product.subtitle}
               </p>
 
+              {/* Rating */}
               <div className="mt-5">
                 <StarRow rating={product.rating} />
               </div>
 
+              {/* Price */}
               <div className="mt-7 flex items-end gap-4 flex-wrap">
-                <span className="text-4xl sm:text-5xl font-black text-black">
+                <span
+                  className="
+                    text-4xl
+                    sm:text-5xl
+                    font-black
+                    text-black
+                    dark:text-white
+                  "
+                >
                   ₹{product.offerPrice.toLocaleString()}
                 </span>
 
-                <span className="text-xl sm:text-2xl line-through text-gray-400">
+                <span
+                  className="
+                    text-xl
+                    sm:text-2xl
+                    line-through
+                    text-gray-400
+                    dark:text-gray-500
+                  "
+                >
                   ₹{product.mrp.toLocaleString()}
                 </span>
               </div>
 
+              {/* Sizes */}
               <div className="mt-8">
-                <h3 className="font-bold text-lg text-gray-900">
+                <h3
+                  className="
+                    font-bold
+                    text-lg
+                    text-gray-900
+                    dark:text-white
+                  "
+                >
                   Available Sizes
                 </h3>
 
@@ -188,11 +411,18 @@ export default function ProductPage({ product }) {
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-5 py-2 rounded-full font-medium transition ${
-                        selectedSize === size
-                          ? "bg-black text-white"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                      }`}
+                      className={`
+                        px-5
+                        py-2
+                        rounded-full
+                        font-medium
+                        transition
+                        ${
+                          selectedSize === size
+                            ? "bg-black dark:bg-white text-white dark:text-black"
+                            : "bg-gray-100 dark:bg-[#252A32] text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-[#303640]"
+                        }
+                      `}
                     >
                       {size}
                     </button>
@@ -200,8 +430,16 @@ export default function ProductPage({ product }) {
                 </div>
               </div>
 
+              {/* Colors */}
               <div className="mt-8">
-                <h3 className="font-bold text-lg text-gray-900">
+                <h3
+                  className="
+                    font-bold
+                    text-lg
+                    text-gray-900
+                    dark:text-white
+                  "
+                >
                   Available Colors
                 </h3>
 
@@ -209,92 +447,296 @@ export default function ProductPage({ product }) {
                   {(product.colors || []).map((color) => (
                     <button
                       key={color}
-                      onClick={() => setSelectedColor(color)}
-                      className={`w-9 h-9 rounded-full border-2 transition ${getColorClass(color)} ${
-                        selectedColor === color ? "border-black scale-110" : "border-gray-300"
-                      }`}
+                      onClick={() =>
+                        setSelectedColor(color)
+                      }
+                      className={`
+                        w-9
+                        h-9
+                        rounded-full
+                        border-2
+                        transition
+                        ${getColorClass(color)}
+                        ${
+                          selectedColor === color
+                            ? "border-black dark:border-white scale-110"
+                            : "border-gray-300 dark:border-gray-600"
+                        }
+                      `}
                       title={color}
                       aria-label={color}
                     />
                   ))}
 
-                  <span className="text-sm text-gray-500 font-medium ml-1">
+                  <span
+                    className="
+                      text-sm
+                      text-gray-500
+                      dark:text-gray-400
+                      font-medium
+                      ml-1
+                    "
+                  >
                     {selectedColor}
                   </span>
                 </div>
               </div>
 
+              {/* Features */}
               <div className="mt-8">
-                <h3 className="font-bold text-lg text-gray-900">
+                <h3
+                  className="
+                    font-bold
+                    text-lg
+                    text-gray-900
+                    dark:text-white
+                  "
+                >
                   Features
                 </h3>
 
                 <div className="flex flex-wrap gap-3 mt-4">
-                  {(product.features || []).map((feature) => (
-                    <div
-                      key={feature}
-                      className="px-4 py-2 rounded-full bg-blue-50 text-blue-700 font-medium text-sm border border-blue-100"
-                    >
-                      {feature}
-                    </div>
-                  ))}
+                  {(product.features || []).map(
+                    (feature) => (
+                      <div
+                        key={feature}
+                        className="
+                          px-4
+                          py-2
+                          rounded-full
+                          bg-blue-50
+                          dark:bg-blue-950/40
+                          text-blue-700
+                          dark:text-blue-300
+                          font-medium
+                          text-sm
+                          border
+                          border-blue-100
+                          dark:border-blue-900/50
+                          transition-colors
+                          duration-300
+                        "
+                      >
+                        {feature}
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
 
+              {/* Specifications */}
               <div className="mt-8 grid sm:grid-cols-3 gap-3 text-sm">
-                <div className="rounded-2xl bg-gray-50 p-4">
-                  <div className="text-gray-500">Warranty</div>
-                  <div className="mt-1 font-semibold text-gray-900">
+                <div
+                  className="
+                    rounded-2xl
+                    bg-gray-50
+                    dark:bg-[#1D2128]
+                    border
+                    border-transparent
+                    dark:border-white/5
+                    p-4
+                    transition-colors
+                    duration-300
+                  "
+                >
+                  <div className="text-gray-500 dark:text-gray-400">
+                    Warranty
+                  </div>
+
+                  <div
+                    className="
+                      mt-1
+                      font-semibold
+                      text-gray-900
+                      dark:text-white
+                    "
+                  >
                     {product.warranty}
                   </div>
                 </div>
 
-                <div className="rounded-2xl bg-gray-50 p-4">
-                  <div className="text-gray-500">Weight</div>
-                  <div className="mt-1 font-semibold text-gray-900">
+                <div
+                  className="
+                    rounded-2xl
+                    bg-gray-50
+                    dark:bg-[#1D2128]
+                    border
+                    border-transparent
+                    dark:border-white/5
+                    p-4
+                    transition-colors
+                    duration-300
+                  "
+                >
+                  <div className="text-gray-500 dark:text-gray-400">
+                    Weight
+                  </div>
+
+                  <div
+                    className="
+                      mt-1
+                      font-semibold
+                      text-gray-900
+                      dark:text-white
+                    "
+                  >
                     {product.weight}
                   </div>
                 </div>
 
-                <div className="rounded-2xl bg-gray-50 p-4">
-                  <div className="text-gray-500">Dimensions</div>
-                  <div className="mt-1 font-semibold text-gray-900">
+                <div
+                  className="
+                    rounded-2xl
+                    bg-gray-50
+                    dark:bg-[#1D2128]
+                    border
+                    border-transparent
+                    dark:border-white/5
+                    p-4
+                    transition-colors
+                    duration-300
+                  "
+                >
+                  <div className="text-gray-500 dark:text-gray-400">
+                    Dimensions
+                  </div>
+
+                  <div
+                    className="
+                      mt-1
+                      font-semibold
+                      text-gray-900
+                      dark:text-white
+                    "
+                  >
                     {product.dims}
                   </div>
                 </div>
               </div>
 
+              {/* Action Buttons */}
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 bg-black hover:bg-gray-800 text-white py-4 rounded-2xl font-bold transition-all">
+                <button
+                  className="
+                    flex-1
+                    bg-black
+                    dark:bg-white
+                    hover:bg-gray-800
+                    dark:hover:bg-gray-200
+                    text-white
+                    dark:text-black
+                    py-4
+                    rounded-2xl
+                    font-bold
+                    transition-all
+                    duration-300
+                  "
+                >
                   Add To Cart
                 </button>
 
-                <button className="flex-1 border border-gray-300 hover:bg-gray-100 py-4 rounded-2xl font-semibold transition-all">
+                <button
+                  className="
+                    flex-1
+                    border
+                    border-gray-300
+                    dark:border-white/15
+                    bg-white
+                    dark:bg-[#1D2128]
+                    text-gray-900
+                    dark:text-white
+                    hover:bg-gray-100
+                    dark:hover:bg-white/10
+                    py-4
+                    rounded-2xl
+                    font-semibold
+                    transition-all
+                    duration-300
+                  "
+                >
                   Buy Now
                 </button>
 
                 <button
                   onClick={toggleCompare}
-                  className={`flex-1 py-4 rounded-2xl font-semibold transition-all border ${
-                    isCompared
-                      ? "bg-gray-900 text-white border-gray-900"
-                      : "border-gray-300 hover:bg-gray-100 text-gray-800"
-                  }`}
+                  className={`
+                    flex-1
+                    py-4
+                    rounded-2xl
+                    font-semibold
+                    transition-all
+                    border
+                    ${
+                      isCompared
+                        ? "bg-gray-900 dark:bg-white text-white dark:text-black border-gray-900 dark:border-white"
+                        : "border-gray-300 dark:border-white/15 bg-white dark:bg-[#1D2128] hover:bg-gray-100 dark:hover:bg-white/10 text-gray-800 dark:text-white"
+                    }
+                  `}
                 >
-                  {isCompared ? "Added to Compare" : "Add to Compare"}
+                  {isCompared
+                    ? "Added to Compare"
+                    : "Add to Compare"}
                 </button>
               </div>
 
-              <div className="mt-8 rounded-3xl bg-[#f8f7f5] border border-gray-100 p-5">
-                <h3 className="font-bold text-gray-900">Need help choosing?</h3>
-                <p className="mt-2 text-gray-600 text-sm leading-relaxed">
-                  Ask the Travence assistant for a recommendation, or reach out to support for guidance.
+              {/* Help */}
+              <div
+                className="
+                  mt-8
+                  rounded-3xl
+                  bg-[#f8f7f5]
+                  dark:bg-[#1D2128]
+                  border
+                  border-gray-100
+                  dark:border-white/10
+                  p-5
+                  transition-all
+                  duration-500
+                "
+              >
+                <h3
+                  className="
+                    font-bold
+                    text-gray-900
+                    dark:text-white
+                  "
+                >
+                  Need help choosing?
+                </h3>
+
+                <p
+                  className="
+                    mt-2
+                    text-gray-600
+                    dark:text-gray-400
+                    text-sm
+                    leading-relaxed
+                  "
+                >
+                  Ask the Travence assistant for a
+                  recommendation, or reach out to support
+                  for guidance.
                 </p>
 
                 <div className="mt-4 flex flex-col sm:flex-row gap-3">
                   <a
                     href="mailto:support@travencebags.in"
-                    className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-gray-800 transition"
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+                      px-5
+                      py-3
+                      rounded-full
+                      bg-black
+                      dark:bg-white
+                      text-white
+                      dark:text-black
+                      font-semibold
+                      hover:bg-gray-800
+                      dark:hover:bg-gray-200
+                      transition
+                    "
                   >
                     Email Support
                   </a>
@@ -303,7 +745,25 @@ export default function ProductPage({ product }) {
                     href="https://wa.me/918527530306"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-gray-300 font-semibold hover:bg-white transition"
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+                      px-5
+                      py-3
+                      rounded-full
+                      border
+                      border-gray-300
+                      dark:border-white/15
+                      bg-white
+                      dark:bg-[#15181D]
+                      text-gray-900
+                      dark:text-white
+                      font-semibold
+                      hover:bg-gray-100
+                      dark:hover:bg-white/10
+                      transition
+                    "
                   >
                     WhatsApp Us
                   </a>
@@ -313,20 +773,69 @@ export default function ProductPage({ product }) {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+        {/* =========================
+            RELATED PRODUCTS
+        ========================= */}
+
+        <section
+          className="
+            max-w-7xl
+            mx-auto
+            px-4
+            sm:px-6
+            pb-16
+          "
+        >
           <div className="flex items-end justify-between gap-4 mb-6">
             <div>
-              <p className="uppercase tracking-[0.2em] text-xs font-semibold text-orange-500">
+              <p
+                className="
+                  uppercase
+                  tracking-[0.2em]
+                  text-xs
+                  font-semibold
+                  text-orange-500
+                "
+              >
                 You May Also Like
               </p>
-              <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mt-2">
+
+              <h2
+                className="
+                  text-3xl
+                  sm:text-4xl
+                  font-black
+                  text-gray-900
+                  dark:text-white
+                  mt-2
+                  transition-colors
+                  duration-500
+                "
+              >
                 Related Products
               </h2>
             </div>
 
             <Link
               href="/shop"
-              className="hidden sm:inline-flex px-5 py-3 rounded-full border border-gray-300 font-semibold hover:bg-white transition"
+              className="
+                hidden
+                sm:inline-flex
+                px-5
+                py-3
+                rounded-full
+                border
+                border-gray-300
+                dark:border-white/15
+                bg-white
+                dark:bg-[#15181D]
+                text-gray-900
+                dark:text-white
+                font-semibold
+                hover:bg-gray-100
+                dark:hover:bg-white/10
+                transition
+              "
             >
               View All
             </Link>
@@ -337,32 +846,109 @@ export default function ProductPage({ product }) {
               <Link
                 key={item.id}
                 href={`/product/${item.slug}`}
-                className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="
+                  group
+                  bg-white
+                  dark:bg-[#15181D]
+                  rounded-3xl
+                  overflow-hidden
+                  border
+                  border-gray-100
+                  dark:border-white/10
+                  shadow-sm
+                  dark:shadow-black/30
+                  hover:shadow-xl
+                  dark:hover:shadow-black/50
+                  transition-all
+                  duration-300
+                "
               >
-                <div className="bg-gradient-to-b from-gray-50 to-white p-5">
-                  <div className="aspect-square overflow-hidden rounded-2xl flex items-center justify-center">
+                {/* Related Image */}
+                <div
+                  className="
+                    bg-gradient-to-b
+                    from-gray-50
+                    to-white
+                    dark:from-[#1D2128]
+                    dark:to-[#15181D]
+                    p-5
+                    transition-colors
+                    duration-500
+                  "
+                >
+                  <div
+                    className="
+                      aspect-square
+                      overflow-hidden
+                      rounded-2xl
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
                     <img
                       src={item.images?.[0]}
                       alt={item.name}
-                      className="w-full h-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                      className="
+                        w-full
+                        h-full
+                        object-contain
+                        p-3
+                        transition-transform
+                        duration-500
+                        group-hover:scale-105
+                      "
                     />
                   </div>
                 </div>
 
+                {/* Related Details */}
                 <div className="p-5">
-                  <h3 className="text-xl font-bold text-gray-900">
+                  <h3
+                    className="
+                      text-xl
+                      font-bold
+                      text-gray-900
+                      dark:text-white
+                      transition-colors
+                      duration-300
+                    "
+                  >
                     {item.name}
                   </h3>
 
-                  <p className="mt-2 text-sm text-gray-500 line-clamp-2">
+                  <p
+                    className="
+                      mt-2
+                      text-sm
+                      text-gray-500
+                      dark:text-gray-400
+                      line-clamp-2
+                    "
+                  >
                     {item.subtitle}
                   </p>
 
                   <div className="mt-4 flex items-center gap-3">
-                    <span className="text-2xl font-black text-black">
+                    <span
+                      className="
+                        text-2xl
+                        font-black
+                        text-black
+                        dark:text-white
+                      "
+                    >
                       ₹{item.offerPrice.toLocaleString()}
                     </span>
-                    <span className="text-sm text-gray-400 line-through">
+
+                    <span
+                      className="
+                        text-sm
+                        text-gray-400
+                        dark:text-gray-500
+                        line-through
+                      "
+                    >
                       ₹{item.mrp.toLocaleString()}
                     </span>
                   </div>
