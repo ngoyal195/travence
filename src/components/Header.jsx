@@ -9,24 +9,33 @@ export default function Header() {
 
   const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);
+  const [darkMode, setDarkMode] =
+    useState(false);
 
   useEffect(() => {
 
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user);
-    });
+  const savedTheme = localStorage.getItem("theme");
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user || null);
-      }
-    );
+  if (savedTheme === "dark") {
+    document.documentElement.classList.add("dark");
+    setDarkMode(true);
+  }
 
-    return () => subscription.unsubscribe();
+  supabase.auth.getUser().then(({ data }) => {
+    setUser(data.user);
+  });
 
-  }, []);
+  const {
+    data: { subscription },
+  } = supabase.auth.onAuthStateChange(
+    (_event, session) => {
+      setUser(session?.user || null);
+    }
+  );
+
+  return () => subscription.unsubscribe();
+
+}, []);
 
   async function handleLogout() {
 
@@ -35,6 +44,20 @@ export default function Header() {
     window.location.reload();
 
   }
+  function toggleTheme() {
+
+  const newTheme = !darkMode;
+
+  setDarkMode(newTheme);
+
+  if (newTheme) {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  }
+}
 
   const navLinks = [
     {
@@ -60,7 +83,21 @@ export default function Header() {
     <>
 
       {/* HEADER */}
-      <header className="sticky top-0 z-50 border-b border-black/5 bg-white/75 backdrop-blur-2xl">
+      <header
+  className="
+    sticky
+    top-0
+    z-50
+    border-b
+    border-black/5
+    dark:border-white/10
+    bg-white/75
+    dark:bg-[#0B0D10]/80
+    backdrop-blur-2xl
+    transition-colors
+    duration-300
+  "
+>
 
         <div className="max-w-7xl mx-auto px-6">
 
@@ -105,7 +142,20 @@ export default function Header() {
                   legacyBehavior
                 >
 
-                  <a className="relative text-sm font-semibold text-gray-700 hover:text-black transition duration-300 group">
+                  <a
+  className="
+    relative
+    text-sm
+    font-semibold
+    text-gray-700
+    dark:text-gray-300
+    hover:text-black
+    dark:hover:text-white
+    transition
+    duration-300
+    group
+  "
+>
 
                     {link.label}
 
@@ -233,7 +283,7 @@ export default function Header() {
 
                 </div>
 
-                <span className="ml-3 font-black uppercase tracking-[0.18em] text-lg">
+                <span className="ml-3 font-black uppercase tracking-[0.18em] text-lg dark:text-white">
 
                   Travence
 
@@ -241,16 +291,83 @@ export default function Header() {
 
               </div>
 
-              <button
-                onClick={() =>
-                  setMobileMenuOpen(false)
-                }
-                className="text-3xl leading-none"
-              >
-                ×
-              </button>
+              <div className="flex items-center gap-3">
+
+  <button
+    onClick={toggleTheme}
+    aria-label="Toggle dark mode"
+    className="
+      w-10
+      h-10
+      rounded-full
+      border
+      border-gray-200
+      dark:border-white/10
+      bg-white
+      dark:bg-[#1D2128]
+      flex
+      items-center
+      justify-center
+      transition
+    "
+  >
+    {darkMode ? "☀️" : "🌙"}
+  </button>
+
+  <button
+    onClick={() =>
+      setMobileMenuOpen(false)
+    }
+    className="
+      w-10
+      h-10
+      rounded-full
+      border
+      border-gray-200
+      dark:border-white/10
+      flex
+      items-center
+      justify-center
+      text-2xl
+      text-gray-900
+      dark:text-white
+    "
+  >
+    ×
+  </button>
+
+</div>
 
             </div>
+            <button
+  onClick={toggleTheme}
+  aria-label="Toggle dark mode"
+  className="
+    relative
+    w-11
+    h-11
+    rounded-full
+    border
+    border-gray-200
+    dark:border-white/10
+    bg-white
+    dark:bg-[#1D2128]
+    flex
+    items-center
+    justify-center
+    transition-all
+    duration-300
+    hover:scale-105
+    hover:border-gray-300
+    dark:hover:border-white/20
+  "
+>
+  {darkMode ? (
+    <span className="text-lg">☀️</span>
+  ) : (
+    <span className="text-lg">🌙</span>
+  )}
+</button>
 
             {/* LINKS */}
             <div className="mt-16 flex flex-col gap-8">
